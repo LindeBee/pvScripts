@@ -206,7 +206,7 @@ from os import path
 
 renderView1.ViewTime = streamTracer1.TimestepValues[-1]
 
-sm = servermanager.Fetch(streamTracer1)
+sm = servermanager.Fetch(slice1)
 r = sm.GetPointData().GetArray('u').GetRange(0)
 uLUT = GetColorTransferFunction('u')
 uLUT.RescaleTransferFunction(r[0], r[1])
