@@ -123,8 +123,8 @@ uxdmfDisplay.DataAxesGrid = 'GridAxesRepresentation'
 uxdmfDisplay.PolarAxes = 'PolarAxesRepresentation'
 uxdmfDisplay.ScalarOpacityUnitDistance = 0.8150460051846975
 uxdmfDisplay.OpacityArrayName = ['POINTS', 'u']
-uxdmfDisplay.SelectInputVectors = ['POINTS', 'u']
-uxdmfDisplay.WriteLog = ''
+#uxdmfDisplay.SelectInputVectors = ['POINTS', 'u']
+#uxdmfDisplay.WriteLog = ''
 
 # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
 uxdmfDisplay.ScaleTransferFunction.Points = [-0.14477217197418213, 0.0, 0.5, 0.0, 1.2599972486495972, 1.0, 0.5, 0.0]
@@ -161,8 +161,8 @@ streamTracer1Display.OpacityArray = ['POINTS', 'AngularVelocity']
 streamTracer1Display.OpacityTransferFunction = 'PiecewiseFunction'
 streamTracer1Display.DataAxesGrid = 'GridAxesRepresentation'
 streamTracer1Display.PolarAxes = 'PolarAxesRepresentation'
-streamTracer1Display.SelectInputVectors = ['POINTS', 'Normals']
-streamTracer1Display.WriteLog = ''
+#streamTracer1Display.SelectInputVectors = ['POINTS', 'Normals']
+#streamTracer1Display.WriteLog = ''
 
 # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
 streamTracer1Display.ScaleTransferFunction.Points = [-1.914056412475803, 0.0, 0.5, 0.0, 1.4226255094723481, 1.0, 0.5, 0.0]
@@ -206,7 +206,7 @@ from os import path
 
 renderView1.ViewTime = streamTracer1.TimestepValues[-1]
 
-sm = servermanager.Fetch(slice1)
+sm = servermanager.Fetch(streamTracer1)
 r = sm.GetPointData().GetArray('u').GetRange(0)
 uLUT = GetColorTransferFunction('u')
 uLUT.RescaleTransferFunction(r[0], r[1])
