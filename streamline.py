@@ -204,7 +204,7 @@ SetActiveSource(uxdmf)
 import os.path
 from os import path
 
-renderView1.ViewTime = streamTracer1.TimestepValues[-1]
+renderView1.ViewTime = slice1.TimestepValues[-1]
 
 sm = servermanager.Fetch(streamTracer1)
 r = sm.GetPointData().GetArray('u').GetRange(0)
