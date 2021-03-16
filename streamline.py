@@ -209,7 +209,7 @@ renderView1.ViewTime = uxdmf.TimestepValues[-1]
 sm = servermanager.Fetch(streamTracer1)
 r = sm.GetPointData().GetArray('u').GetRange(0)
 uLUT = GetColorTransferFunction('u')
-uLUT.RescaleTransferFunction(r[0], r[1])
+uLUT.RescaleTransferFunction(0., r[1])
 
 SaveScreenshot('./images/streamline.png', renderView2, ImageResolution=[1820, 1146])
 
