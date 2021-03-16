@@ -211,7 +211,7 @@ r = sm.GetPointData().GetArray('u').GetRange(0)
 uLUT = GetColorTransferFunction('u')
 uLUT.RescaleTransferFunction(r[0], r[1])
 
-SaveScreenshot('./images/streamline.png', renderView1, ImageResolution=[1038, 1146])
+SaveScreenshot('./images/streamline.png', renderView2, ImageResolution=[1038, 1146])
 
 print("Exiting")
 exit()
