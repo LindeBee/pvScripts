@@ -99,6 +99,11 @@ uxdmfDisplay.OpacityTransferFunction.Points = [-0.0786382332444191, 0.0, 0.5, 0.
 # show data from streamTracer1
 streamTracer1Display = Show(streamTracer1, renderView1, 'GeometryRepresentation')
 
+# get color transfer function/color map for 'u'
+uLUT = GetColorTransferFunction('u')
+uLUT.RGBPoints = [5.054423145490194e-09, 0.231373, 0.298039, 0.752941, 0.6299970175266045, 0.865003, 0.865003, 0.865003, 1.2599940299987866, 0.705882, 0.0156863, 0.14902]
+uLUT.ScalarRangeInitialized = 1.0
+
 # trace defaults for the display properties.
 streamTracer1Display.Representation = 'Surface'
 streamTracer1Display.ColorArrayName = ['POINTS', 'u']
