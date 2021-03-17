@@ -47,7 +47,7 @@ SetActiveView(renderView1)
 # ----------------------------------------------------------------
 
 # create a new 'XDMF Reader'
-uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['/Users/linde/Downloads/u.xdmf'])
+uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['./results/u.xdmf'])
 uxdmf.PointArrayStatus = ['u']
 
 # create a new 'Stream Tracer'
