@@ -18,9 +18,9 @@ renderView1.ViewSize = [1818, 1146]
 renderView1.AxesGrid = 'GridAxes3DActor'
 renderView1.CenterOfRotation = [0.0, 0.0, 6.0]
 renderView1.StereoType = 'Crystal Eyes'
-renderView1.CameraPosition = [-3.558576027625664, -7.019563782211578, 2.5669854037883386]
-renderView1.CameraFocalPoint = [-0.1109995009192975, -1.0066034456147703, 1.2205295660629716]
-renderView1.CameraViewUp = [0.11692028031091281, 0.1527079468999704, 0.9813306940097276]
+renderView1.CameraPosition = [-5.007944914377122, -10.049024226301702, 4.619743236878824]
+renderView1.CameraFocalPoint = [0., 0., 1.2]
+renderView1.CameraViewUp = [0., 0., 1.]
 renderView1.CameraFocalDisk = 1.0
 renderView1.CameraParallelScale = 18.0
 renderView1.BackEnd = 'OSPRay raycaster'
@@ -50,6 +50,9 @@ SetActiveView(renderView1)
 uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['./results/u.xdmf'])
 uxdmf.PointArrayStatus = ['u']
 
+# create a new 'Extract Surface'
+extractSurface1 = ExtractSurface(registrationName='ExtractSurface1', Input=uxdmf)
+
 # create a new 'Stream Tracer'
 streamTracer1 = StreamTracer(registrationName='StreamTracer1', Input=uxdmf,
     SeedType='Point Cloud')
@@ -60,48 +63,63 @@ streamTracer1.MaximumStreamlineLength = 24.0
 streamTracer1.SeedType.Center = [-0.5, 0.0, 1.0]
 streamTracer1.SeedType.Radius = 2.4000000000000004
 
+# create a new 'Clip'
+clip3 = Clip(registrationName='Clip3', Input=extractSurface1)
+clip3.ClipType = 'Box'
+clip3.HyperTreeGridClipper = 'Plane'
+clip3.Scalars = ['POINTS', '']
+
+# init the 'Box' selected for 'ClipType'
+clip3.ClipType.Position = [-12.0, -12.0, 0.0]
+clip3.ClipType.Length = [24.0, 24.0, 5.0]
+
+# init the 'Plane' selected for 'HyperTreeGridClipper'
+clip3.HyperTreeGridClipper.Origin = [0.0, 0.0, 6.0]
+
 # ----------------------------------------------------------------
 # setup the visualization in view 'renderView1'
 # ----------------------------------------------------------------
 
-# show data from uxdmf
-uxdmfDisplay = Show(uxdmf, renderView1, 'UnstructuredGridRepresentation')
+# show data from clip3
+clip3Display = Show(clip3, renderView1, 'UnstructuredGridRepresentation')
 
 # trace defaults for the display properties.
-uxdmfDisplay.Representation = 'Surface'
-uxdmfDisplay.ColorArrayName = [None, '']
-uxdmfDisplay.SelectTCoordArray = 'None'
-uxdmfDisplay.SelectNormalArray = 'None'
-uxdmfDisplay.SelectTangentArray = 'None'
-uxdmfDisplay.OSPRayScaleArray = 'u'
-uxdmfDisplay.OSPRayScaleFunction = 'PiecewiseFunction'
-uxdmfDisplay.SelectOrientationVectors = 'u'
-uxdmfDisplay.ScaleFactor = 2.4000000000000004
-uxdmfDisplay.SelectScaleArray = 'None'
-uxdmfDisplay.GlyphType = 'Arrow'
-uxdmfDisplay.GlyphTableIndexArray = 'None'
-uxdmfDisplay.GaussianRadius = 0.12
-uxdmfDisplay.SetScaleArray = ['POINTS', 'u']
-uxdmfDisplay.ScaleTransferFunction = 'PiecewiseFunction'
-uxdmfDisplay.OpacityArray = ['POINTS', 'u']
-uxdmfDisplay.OpacityTransferFunction = 'PiecewiseFunction'
-uxdmfDisplay.DataAxesGrid = 'GridAxesRepresentation'
-uxdmfDisplay.PolarAxes = 'PolarAxesRepresentation'
-uxdmfDisplay.ScalarOpacityUnitDistance = 0.9281321349868448
-uxdmfDisplay.OpacityArrayName = ['POINTS', 'u']
+clip3Display.Representation = 'Surface'
+clip3Display.AmbientColor = [0.3137254901960784, 0.3137254901960784, 0.3137254901960784]
+clip3Display.ColorArrayName = [None, '']
+clip3Display.DiffuseColor = [0.3137254901960784, 0.3137254901960784, 0.3137254901960784]
+clip3Display.SelectTCoordArray = 'None'
+clip3Display.SelectNormalArray = 'None'
+clip3Display.SelectTangentArray = 'None'
+clip3Display.OSPRayScaleArray = 'u'
+clip3Display.OSPRayScaleFunction = 'PiecewiseFunction'
+clip3Display.SelectOrientationVectors = 'u'
+clip3Display.ScaleFactor = 0.2
+clip3Display.SelectScaleArray = 'None'
+clip3Display.GlyphType = 'Arrow'
+clip3Display.GlyphTableIndexArray = 'None'
+clip3Display.GaussianRadius = 0.01
+clip3Display.SetScaleArray = ['POINTS', 'u']
+clip3Display.ScaleTransferFunction = 'PiecewiseFunction'
+clip3Display.OpacityArray = ['POINTS', 'u']
+clip3Display.OpacityTransferFunction = 'PiecewiseFunction'
+clip3Display.DataAxesGrid = 'GridAxesRepresentation'
+clip3Display.PolarAxes = 'PolarAxesRepresentation'
+clip3Display.ScalarOpacityUnitDistance = 0.306796723923514
+clip3Display.OpacityArrayName = ['POINTS', 'u']
 
 # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
-uxdmfDisplay.ScaleTransferFunction.Points = [-0.0786382332444191, 0.0, 0.5, 0.0, 1.2599570751190186, 1.0, 0.5, 0.0]
+clip3Display.ScaleTransferFunction.Points = [-0.13641615211963654, 0.0, 0.5, 0.0, 0.8052195310592651, 1.0, 0.5, 0.0]
 
 # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
-uxdmfDisplay.OpacityTransferFunction.Points = [-0.0786382332444191, 0.0, 0.5, 0.0, 1.2599570751190186, 1.0, 0.5, 0.0]
+clip3Display.OpacityTransferFunction.Points = [-0.13641615211963654, 0.0, 0.5, 0.0, 0.8052195310592651, 1.0, 0.5, 0.0]
 
 # show data from streamTracer1
 streamTracer1Display = Show(streamTracer1, renderView1, 'GeometryRepresentation')
 
 # get color transfer function/color map for 'u'
 uLUT = GetColorTransferFunction('u')
-uLUT.RGBPoints = [5.054423145490194e-09, 0.231373, 0.298039, 0.752941, 0.6299970175266045, 0.865003, 0.865003, 0.865003, 1.2599940299987866, 0.705882, 0.0156863, 0.14902]
+uLUT.RGBPoints = [7.936710681885738e-09, 0.231373, 0.298039, 0.752941, 0.6300376693354819, 0.865003, 0.865003, 0.865003, 1.260075330734253, 0.705882, 0.0156863, 0.14902]
 uLUT.ScalarRangeInitialized = 1.0
 
 # trace defaults for the display properties.
@@ -114,11 +132,11 @@ streamTracer1Display.SelectTangentArray = 'None'
 streamTracer1Display.OSPRayScaleArray = 'AngularVelocity'
 streamTracer1Display.OSPRayScaleFunction = 'PiecewiseFunction'
 streamTracer1Display.SelectOrientationVectors = 'Normals'
-streamTracer1Display.ScaleFactor = 2.40007438659668
+streamTracer1Display.ScaleFactor = 2.398476982116699
 streamTracer1Display.SelectScaleArray = 'AngularVelocity'
 streamTracer1Display.GlyphType = 'Arrow'
 streamTracer1Display.GlyphTableIndexArray = 'AngularVelocity'
-streamTracer1Display.GaussianRadius = 0.12000371932983399
+streamTracer1Display.GaussianRadius = 0.11992384910583496
 streamTracer1Display.SetScaleArray = ['POINTS', 'AngularVelocity']
 streamTracer1Display.ScaleTransferFunction = 'PiecewiseFunction'
 streamTracer1Display.OpacityArray = ['POINTS', 'AngularVelocity']
@@ -127,20 +145,17 @@ streamTracer1Display.DataAxesGrid = 'GridAxesRepresentation'
 streamTracer1Display.PolarAxes = 'PolarAxesRepresentation'
 
 # init the 'PiecewiseFunction' selected for 'ScaleTransferFunction'
-streamTracer1Display.ScaleTransferFunction.Points = [-0.033927146572459224, 0.0, 0.5, 0.0, 0.01586547854421267, 1.0, 0.5, 0.0]
+streamTracer1Display.ScaleTransferFunction.Points = [-2.219871916053603, 0.0, 0.5, 0.0, 1.6925958278228421, 1.0, 0.5, 0.0]
 
 # init the 'PiecewiseFunction' selected for 'OpacityTransferFunction'
-streamTracer1Display.OpacityTransferFunction.Points = [-0.033927146572459224, 0.0, 0.5, 0.0, 0.01586547854421267, 1.0, 0.5, 0.0]
+streamTracer1Display.OpacityTransferFunction.Points = [-2.219871916053603, 0.0, 0.5, 0.0, 1.6925958278228421, 1.0, 0.5, 0.0]
 
 # setup the color legend parameters for each legend in this view
 
 # get color legend/bar for uLUT in view renderView1
 uLUTColorBar = GetScalarBar(uLUT, renderView1)
-uLUTColorBar.WindowLocation = 'AnyLocation'
-uLUTColorBar.Position = [0.7780906593406592, 0.07417102966841188]
 uLUTColorBar.Title = 'u'
 uLUTColorBar.ComponentTitle = 'Magnitude'
-uLUTColorBar.ScalarBarLength = 0.33000000000000046
 
 # set color bar visibility
 uLUTColorBar.Visibility = 1
@@ -155,7 +170,7 @@ streamTracer1Display.SetScalarBarVisibility(renderView1, True)
 
 # get opacity transfer function/opacity map for 'u'
 uPWF = GetOpacityTransferFunction('u')
-uPWF.Points = [5.054423145490194e-09, 0.0, 0.5, 0.0, 1.2599940299987866, 0.15641026198863983, 0.5, 0.0]
+uPWF.Points = [7.936710681885738e-09, 0.0, 0.5, 0.0, 1.260075330734253, 1.0, 0.5, 0.0]
 uPWF.ScalarRangeInitialized = 1
 
 # ----------------------------------------------------------------
