@@ -83,7 +83,7 @@ Show(uxdmf)
 Hide(uxdmf)
 
 renderView1.CameraPosition = [0., -60., (zmax+zmin)/3]
-renderView1.CameraFocalPoint = [(xmax+xmin)/2, (ymax+ymin)/2, (zmax+zmin)/2]
+renderView1.CameraFocalPoint = [(xmax+xmin)/2, (ymax+ymin)/2, (zmax+zmin)/3]
 
 # create a new 'Slice'
 slice1 = Slice(registrationName='Slice1', Input=uxdmf)
