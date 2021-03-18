@@ -18,7 +18,7 @@ renderView1.ViewSize = [1818, 1146]
 renderView1.AxesGrid = 'GridAxes3DActor'
 renderView1.CenterOfRotation = [0.0, 0.0, 6.0]
 renderView1.StereoType = 'Crystal Eyes'
-renderView1.CameraPosition = [-19.517870614478063, -58.065601014166255, 38.97107031029266]
+renderView1.CameraPosition = [-19.517870614478063*2, -58.065601014166255*2, 38.97107031029266*2]
 renderView1.CameraFocalPoint = [1.060377920498384, -0.9447236006935089, 5.052360173308529]
 renderView1.CameraViewUp = [0.1507343979572938, 0.4640301161285433, 0.872900448274706]
 renderView1.CameraFocalDisk = 1.0
@@ -49,6 +49,9 @@ SetActiveView(renderView1)
 # create a new 'XDMF Reader'
 uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['./results/u.xdmf'])
 uxdmf.PointArrayStatus = ['u']
+Show(uxdmf)
+(xmin,xmax,ymin,ymax,zmin,zmax) = GetActiveSource().GetDataInformation().GetBounds()
+Hide(uxdmf)
 
 # create a new 'Extract Surface'
 extractSurface1 = ExtractSurface(registrationName='ExtractSurface1', Input=uxdmf)
@@ -60,8 +63,8 @@ clip1.HyperTreeGridClipper = 'Plane'
 clip1.Scalars = ['POINTS', '']
 
 # init the 'Box' selected for 'ClipType'
-clip1.ClipType.Position = [-12.0, -12.0, -1.0]
-clip1.ClipType.Length = [25.0, 25.0, 13.0]
+clip1.ClipType.Position = [xmin, ymin, zmin-1.0]
+clip1.ClipType.Length = [xmax-xmin+1, ymax-ymin+1, zmax+1]
 
 # init the 'Plane' selected for 'HyperTreeGridClipper'
 clip1.HyperTreeGridClipper.Origin = [0.0, 0.0, 6.0]
