@@ -350,7 +350,7 @@ for t in extractTimeSteps1.TimestepValues:
     sm = servermanager.Fetch(slice1)
     r = sm.GetPointData().GetArray('u').GetRange(0)
     uLUT = GetColorTransferFunction('u')
-    uLUT.RescaleTransferFunction(0, r[1])
+    uLUT.RescaleTransferFunction(0, r[1]-r[1]/4)
     
     if not path.exists('./images/rv%3.3d.png' % (i)):
         print("Rendering:", t)
