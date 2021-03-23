@@ -71,7 +71,7 @@ streamTracer1.MaximumStreamlineLength = 24.0
 # init the 'Point Cloud' selected for 'SeedType'
 streamTracer1.SeedType.Center = [0.0, 0.0, 0.0]
 streamTracer1.SeedType.Radius = xmax/50
-streamTracer1.SeedType.NumberOfPoints = 400
+streamTracer1.SeedType.NumberOfPoints = 200
 
 # create a new 'Clip'
 clip3 = Clip(registrationName='Clip3', Input=extractSurface1)
