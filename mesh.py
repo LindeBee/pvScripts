@@ -63,7 +63,7 @@ clip1.HyperTreeGridClipper = 'Plane'
 clip1.Scalars = ['POINTS', '']
 
 # init the 'Box' selected for 'ClipType'
-clip1.ClipType.Position = [xmin+(e-5), ymin+(e-5), zmin-1.0]
+clip1.ClipType.Position = [xmin+0.000001, ymin+0.000001, zmin-1.0]
 clip1.ClipType.Length = [xmax-xmin+1, ymax-ymin+1, zmax+1]
 
 # init the 'Plane' selected for 'HyperTreeGridClipper'
