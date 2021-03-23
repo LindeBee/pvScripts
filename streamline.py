@@ -50,6 +50,14 @@ SetActiveView(renderView1)
 # create a new 'XDMF Reader'
 uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['./results/u.xdmf'])
 uxdmf.PointArrayStatus = ['u']
+n_steps = len(uxdmf.TimestepValues)
+Show(uxdmf)
+(xmin,xmax,ymin,ymax,zmin,zmax) = GetActiveSource().GetDataInformation().GetBounds()
+Hide(uxdmf)
+
+renderView1.CameraPosition = [-xmax/12., -xmax/6., xmax/12.]
+renderView1.CameraFocalPoint = [0., 0., xmax/300]
+renderView1.CameraViewUp = [0., 0., 1.]
 
 # create a new 'Extract Surface'
 extractSurface1 = ExtractSurface(registrationName='ExtractSurface1', Input=uxdmf)
@@ -61,8 +69,9 @@ streamTracer1.Vectors = ['POINTS', 'u']
 streamTracer1.MaximumStreamlineLength = 24.0
 
 # init the 'Point Cloud' selected for 'SeedType'
-streamTracer1.SeedType.Center = [-0.5, 0.0, 1.0]
-streamTracer1.SeedType.Radius = 2.4000000000000004
+streamTracer1.SeedType.Center = [0.0, 0.0, 0.0]
+streamTracer1.SeedType.Radius = xmax/50
+streamTracer1.SeedType.NumberOfPoints = 400
 
 # create a new 'Clip'
 clip3 = Clip(registrationName='Clip3', Input=extractSurface1)
