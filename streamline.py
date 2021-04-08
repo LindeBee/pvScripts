@@ -71,7 +71,7 @@ streamTracer1.MaximumStreamlineLength = 24.0
 # init the 'Point Cloud' selected for 'SeedType'
 streamTracer1.SeedType.Center = [0.0, 0.0, 0.0]
 streamTracer1.SeedType.Radius = xmax/50
-streamTracer1.SeedType.NumberOfPoints = 200
+streamTracer1.SeedType.NumberOfPoints = 300
 
 # create a new 'Clip'
 clip3 = Clip(registrationName='Clip3', Input=extractSurface1)
@@ -81,7 +81,7 @@ clip3.Scalars = ['POINTS', '']
 
 # init the 'Box' selected for 'ClipType'
 clip3.ClipType.Position = [-12.0, -12.0, 0.0]
-clip3.ClipType.Length = [24.0, 24.0, 5.0]
+clip3.ClipType.Length = [24.0, 24.0, xmax/2]
 
 # init the 'Plane' selected for 'HyperTreeGridClipper'
 clip3.HyperTreeGridClipper.Origin = [0.0, 0.0, 6.0]
