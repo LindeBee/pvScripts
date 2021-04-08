@@ -55,7 +55,7 @@ Show(uxdmf)
 (xmin,xmax,ymin,ymax,zmin,zmax) = GetActiveSource().GetDataInformation().GetBounds()
 Hide(uxdmf)
 
-renderView1.CameraPosition = [-xmax/12., -xmax/6., xmax/12.]
+renderView1.CameraPosition = [-xmax/24., -xmax/12., xmax/24.]
 renderView1.CameraFocalPoint = [0., 0., xmax/300]
 renderView1.CameraViewUp = [0., 0., 1.]
 
