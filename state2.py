@@ -82,7 +82,7 @@ Show(uxdmf)
 (xmin,xmax,ymin,ymax,zmin,zmax) = GetActiveSource().GetDataInformation().GetBounds()
 Hide(uxdmf)
 
-renderView1.CameraPosition = [0., -30., 2]
+renderView1.CameraPosition = [(xmax+xmin)/2, -60., 2]
 renderView1.CameraFocalPoint = [(xmax+xmin)/2, (ymax+ymin)/2, 2]
 
 # create a new 'Slice'
