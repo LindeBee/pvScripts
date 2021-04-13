@@ -65,7 +65,7 @@ SetActiveView(mvv)
 # ----------------------------------------------------------------
 
 # create a new 'XDMF Reader'
-uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['./u.xdmf'])
+uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['./results/u.xdmf'])
 uxdmf.PointArrayStatus = ['u']
 n_steps = len(uxdmf.TimestepValues)
 Show(uxdmf)
