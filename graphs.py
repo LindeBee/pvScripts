@@ -65,7 +65,7 @@ SetActiveView(mvv)
 # ----------------------------------------------------------------
 
 # ABL = '(1/ln((2+0.06)/0.06))*ln((coordsZ+0.06)/0.06)'
-ABL = '(1.*(coordsZ/2.)^0.25)'
+ABL = '(1.0*(coordsZ/2.0)^0.25)'
 
 # create a new 'XDMF Reader'
 uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['./results/u.xdmf'])
