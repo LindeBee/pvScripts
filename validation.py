@@ -96,7 +96,7 @@ rescaleResults = Calculator(registrationName='RescaleResults', Input=uxdmf)
 rescaleResults.CoordinateResults = 1
 rescaleResults.Function = 'coords./2.0' # divide coords by height building
 
-writer = CreateWriter("./dataset.csv", rescaleResults)
+writer = CreateWriter("./dataset.csv")
 writer.FieldAssociation = "Points"
 writer.UpdatePipeline()
 
