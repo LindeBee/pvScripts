@@ -105,9 +105,9 @@ caseHcsv = CSVReader(registrationName='CaseH_u.csv', FileName=['./pvScripts/Case
 
 # create a new 'Table To Points'
 valiToPoints = TableToPoints(registrationName='ValiToPoints', Input=caseHcsv)
-valiToPoints.XColumn = 'x/H'
-valiToPoints.YColumn = 'y/H'
-valiToPoints.ZColumn = 'z/H'
+valiToPoints.XColumn = 'xH'
+valiToPoints.YColumn = 'yH'
+valiToPoints.ZColumn = 'zH'
 
 # create a new 'Calculator'
 makeUVector = Calculator(registrationName='MakeUVector', Input=valiToPoints)
