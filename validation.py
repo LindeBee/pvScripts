@@ -44,6 +44,7 @@ renderView1.OSPRayMaterialLibrary = materialLibrary1
 # Create a new 'SpreadSheet View'
 boxChartView1 = CreateView('BoxChartView')
 boxChartView1.ViewSize = [903, 446]
+boxChartView1.LeftAxisCustomRange = 0
 
 SetActiveView(None)
 
@@ -164,7 +165,6 @@ computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input
 computeQuartiles1Display = Show(computeQuartiles1, boxChartView1, 'BoxChartRepresentation')
 
 # trace defaults for the display properties.
-computeQuartiles1Display.CompositeDataSetIndex = 0
 computeQuartiles1Display.FieldAssociation = 'Row Data'
 computeQuartiles1Display.SeriesVisibility = ['u:0']
 computeQuartiles1Display.SeriesColor = ['u:0', '0', '0', '0']
