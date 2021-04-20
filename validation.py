@@ -161,8 +161,13 @@ descriptiveStatistics1 = DescriptiveStatistics(registrationName='DescriptiveStat
     ModelInput=None)
 descriptiveStatistics1.VariablesofInterest = ['error']
 
-writer = CreateWriter("./results/stats.csv", descriptiveStatistics1)
-writer.RowDataArrays = 'Statistical Model'
+# create a new 'Calculator'
+calculator1 = Calculator(registrationName='Calculator1', Input=descriptiveStatistics1)
+calculator1.AttributeType = 'Row Data'
+calculator1.ResultArrayName = 'results'
+calculator1.Function = 'Mean'
+
+writer = CreateWriter("./results/stats.csv", calculator1)
 writer.FieldAssociation = "Row Data"
 writer.UpdatePipeline()
 
