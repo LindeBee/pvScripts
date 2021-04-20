@@ -15,12 +15,12 @@ u_l = 1
 
 # Create a new 'Line Chart View'
 lineChartView1 = CreateView('XYChartView')
-lineChartView1.ViewSize = [1824, 260]
+lineChartView1.ViewSize = [1824, 272]
 lineChartView1.LegendPosition = [1678, 67]
 
 # Create a new 'Line Chart View'
 lineChartView2 = CreateView('XYChartView')
-lineChartView2.ViewSize = [1824, 272]
+lineChartView2.ViewSize = [1824, 260]
 lineChartView2.ShowLegend = 0
 lineChartView2.LegendPosition = [1716, 219]
 
@@ -60,7 +60,7 @@ layout1.SplitVertical(0, 0.430233)
 layout1.SplitHorizontal(1, 0.509804)
 layout1.AssignView(3, renderView1)
 layout1.AssignView(4, spreadSheetView1)
-layout1.SplitVertical(2, 0.488235)
+layout1.SplitVertical(2, 1-0.488235)
 layout1.AssignView(5, lineChartView1)
 layout1.AssignView(6, lineChartView2)
 layout1.SetSize(1824, 980)
