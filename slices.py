@@ -190,6 +190,18 @@ uLUT = GetColorTransferFunction('u')
 uLUT.RGBPoints = [0.019010998064402217, 0.231373, 0.298039, 0.752941, 2.7801894613254925, 0.865003, 0.865003, 0.865003, 5.541367924586583, 0.705882, 0.0156863, 0.14902]
 uLUT.ScalarRangeInitialized = 1.0
 
+uLUT_1 = GetColorTransferFunction('u')
+uLUT_1.RGBPoints = [0.019010998064402217, 0.231373, 0.298039, 0.752941, 2.7801894613254925, 0.865003, 0.865003, 0.865003, 5.541367924586583, 0.705882, 0.0156863, 0.14902]
+uLUT_1.ScalarRangeInitialized = 1.0
+
+uLUT_2 = GetColorTransferFunction('u')
+uLUT_2.RGBPoints = [0.019010998064402217, 0.231373, 0.298039, 0.752941, 2.7801894613254925, 0.865003, 0.865003, 0.865003, 5.541367924586583, 0.705882, 0.0156863, 0.14902]
+uLUT_2.ScalarRangeInitialized = 1.0
+
+uLUT_3 = GetColorTransferFunction('u')
+uLUT_3.RGBPoints = [0.019010998064402217, 0.231373, 0.298039, 0.752941, 2.7801894613254925, 0.865003, 0.865003, 0.865003, 5.541367924586583, 0.705882, 0.0156863, 0.14902]
+uLUT_3.ScalarRangeInitialized = 1.0
+
 # trace defaults for the display properties.
 slice1Display.Representation = 'Surface'
 slice1Display.ColorArrayName = ['POINTS', 'u']
@@ -245,7 +257,7 @@ slice3Display = Show(slice3, renderView2, 'GeometryRepresentation')
 # trace defaults for the display properties.
 slice3Display.Representation = 'Surface'
 slice3Display.ColorArrayName = ['POINTS', 'u']
-slice3Display.LookupTable = uLUT
+slice3Display.LookupTable = uLUT_1
 slice3Display.SelectTCoordArray = 'None'
 slice3Display.SelectNormalArray = 'None'
 slice3Display.SelectTangentArray = 'None'
@@ -276,7 +288,7 @@ text3Display = Show(text3, renderView2, 'TextSourceRepresentation')
 # setup the color legend parameters for each legend in this view
 
 # get color legend/bar for uLUT in view renderView2
-uLUTColorBar_1 = GetScalarBar(uLUT, renderView2)
+uLUTColorBar_1 = GetScalarBar(uLUT_1, renderView2)
 uLUTColorBar_1.Title = 'u'
 uLUTColorBar_1.ComponentTitle = 'Magnitude'
 
@@ -296,7 +308,7 @@ slice4Display = Show(slice4, renderView3, 'GeometryRepresentation')
 # trace defaults for the display properties.
 slice4Display.Representation = 'Surface'
 slice4Display.ColorArrayName = ['POINTS', 'u']
-slice4Display.LookupTable = uLUT
+slice4Display.LookupTable = uLUT_2
 slice4Display.SelectTCoordArray = 'None'
 slice4Display.SelectNormalArray = 'None'
 slice4Display.SelectTangentArray = 'None'
@@ -327,7 +339,7 @@ text4Display = Show(text4, renderView3, 'TextSourceRepresentation')
 # setup the color legend parameters for each legend in this view
 
 # get color legend/bar for uLUT in view renderView3
-uLUTColorBar_2 = GetScalarBar(uLUT, renderView3)
+uLUTColorBar_2 = GetScalarBar(uLUT_2, renderView3)
 uLUTColorBar_2.Title = 'u'
 uLUTColorBar_2.ComponentTitle = 'Magnitude'
 
@@ -347,7 +359,7 @@ slice2Display = Show(slice2, renderView4, 'GeometryRepresentation')
 # trace defaults for the display properties.
 slice2Display.Representation = 'Surface'
 slice2Display.ColorArrayName = ['POINTS', 'u']
-slice2Display.LookupTable = uLUT
+slice2Display.LookupTable = uLUT_3
 slice2Display.SelectTCoordArray = 'None'
 slice2Display.SelectNormalArray = 'None'
 slice2Display.SelectTangentArray = 'None'
@@ -378,7 +390,7 @@ text2Display = Show(text2, renderView4, 'TextSourceRepresentation')
 # setup the color legend parameters for each legend in this view
 
 # get color legend/bar for uLUT in view renderView4
-uLUTColorBar_3 = GetScalarBar(uLUT, renderView4)
+uLUTColorBar_3 = GetScalarBar(uLUT_3, renderView4)
 uLUTColorBar_3.WindowLocation = 'AnyLocation'
 uLUTColorBar_3.Position = [0.7606707317073171, 0.6259398496240601]
 uLUTColorBar_3.Title = 'u'
@@ -410,6 +422,23 @@ renderView1.ViewTime = t
 
 import os.path
 from os import path
+
+sm = servermanager.Fetch(slice1)
+r = sm.GetPointData().GetArray('u').GetRange(0)
+uLUT = GetColorTransferFunction('u')
+uLUT.RescaleTransferFunction(r[0], r[1])
+sm = servermanager.Fetch(slice3)
+r = sm.GetPointData().GetArray('u').GetRange(0)
+uLUT_1 = GetColorTransferFunction('u')
+uLUT_1.RescaleTransferFunction(r[0], r[1])
+sm = servermanager.Fetch(slice4)
+r = sm.GetPointData().GetArray('u').GetRange(0)
+uLUT_2 = GetColorTransferFunction('u')
+uLUT_2.RescaleTransferFunction(r[0], r[1])
+sm = servermanager.Fetch(slice2)
+r = sm.GetPointData().GetArray('u').GetRange(0)
+uLUT_3 = GetColorTransferFunction('u')
+uLUT_3.RescaleTransferFunction(r[0], r[1])
 
 print("Rendering", t)
 # Get the layout/tab for the active view.
