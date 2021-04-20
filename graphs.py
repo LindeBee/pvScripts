@@ -64,6 +64,9 @@ SetActiveView(mvv)
 # setup the data processing pipelines
 # ----------------------------------------------------------------
 
+# ABL = '(1/ln((2+0.06)/0.06))*ln((coordsZ+0.06)/0.06)'
+ABL = '(1.*(coordsZ/2)^0.25)'
+
 # create a new 'XDMF Reader'
 uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['./results/u.xdmf'])
 uxdmf.PointArrayStatus = ['u']
@@ -81,7 +84,7 @@ lineTVV.Resolution = 100
 # create a new 'Calculator'
 calculatorTVV = Calculator(registrationName='CalculatorMVVtarget', Input=lineTVV)
 calculatorTVV.ResultArrayName = 't'
-calculatorTVV.Function = '(1/ln((1+0.06)/0.06))*ln((coordsZ+0.06)/0.06)'
+calculatorTVV.Function = ABL
 
 # create a new 'Plot Over Line'
 tvv = PlotOverLine(registrationName='tvv', Input=calculatorTVV,
@@ -99,7 +102,7 @@ lineTVH1.Point2 = [(zmax-zmin)/2, ymax, 0.02*zmax]
 # create a new 'Calculator'
 calculatorTVH1 = Calculator(registrationName='CalculatorMVH1', Input=lineTVH1)
 calculatorTVH1.ResultArrayName = 'target'
-calculatorTVH1.Function = '(1/ln((1+0.06)/0.06))*ln((coordsZ+0.06)/0.06)'
+calculatorTVH1.Function = ABL
 
 # create a new 'Plot Over Line'
 tvh002 = PlotOverLine(registrationName='tvh0.02', Input=calculatorTVH1,
@@ -117,7 +120,7 @@ lineTVH2.Point2 = [(zmax-zmin)/2, ymax, 0.05*zmax]
 # create a new 'Calculator'
 calculatorTVH2 = Calculator(registrationName='CalculatorMVH2', Input=lineTVH2)
 calculatorTVH2.ResultArrayName = 'target'
-calculatorTVH2.Function = '(1/ln((1+0.06)/0.06))*ln((coordsZ+0.06)/0.06)'
+calculatorTVH2.Function = ABL
 
 # create a new 'Plot Over Line'
 tvh005 = PlotOverLine(registrationName='tvh0.05', Input=calculatorTVH2,
@@ -135,7 +138,7 @@ lineTVH3.Point2 = [(zmax-zmin)/2, ymax, 0.1*zmax]
 # create a new 'Calculator'
 calculatorTVH3 = Calculator(registrationName='CalculatorMVH3', Input=lineTVH3)
 calculatorTVH3.ResultArrayName = 'target'
-calculatorTVH3.Function = '(1/ln((1+0.06)/0.06))*ln((coordsZ+0.06)/0.06)'
+calculatorTVH3.Function = ABL
 
 # create a new 'Plot Over Line'
 tvh01 = PlotOverLine(registrationName='tvh0.1', Input=calculatorTVH3,
@@ -153,7 +156,7 @@ lineTVH4.Point2 = [(zmax-zmin)/2, ymax, 0.3*zmax]
 # create a new 'Calculator'
 calculatorTVH4 = Calculator(registrationName='Calculator7', Input=lineTVH4)
 calculatorTVH4.ResultArrayName = 'target'
-calculatorTVH4.Function = '(1/ln((1+0.06)/0.06))*ln((coordsZ+0.06)/0.06)'
+calculatorTVH4.Function = ABL
 
 # create a new 'Plot Over Line'
 tvh03 = PlotOverLine(registrationName='tvh0.3', Input=calculatorTVH4,
@@ -171,7 +174,7 @@ lineTVH5.Point2 = [(zmax-zmin)/2, ymax, 0.7*zmax]
 # create a new 'Calculator'
 calculatorTVH5 = Calculator(registrationName='Calculator8', Input=lineTVH5)
 calculatorTVH5.ResultArrayName = 'target'
-calculatorTVH5.Function = '(1/ln((1+0.06)/0.06))*ln((coordsZ+0.06)/0.06)'
+calculatorTVH5.Function = ABL
 
 # create a new 'Plot Over Line'
 tvh07 = PlotOverLine(registrationName='tvh0.7', Input=calculatorTVH5,
