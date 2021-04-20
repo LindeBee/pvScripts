@@ -97,7 +97,7 @@ rescaleResults.CoordinateResults = 1
 rescaleResults.Function = 'iHat*(coordsX/2) +jHat*(coordsY/2) +kHat*(coordsZ/2)' # divide coords by height building
 
 writer = CreateWriter("./dataset.csv")
-writer.FieldAssociation = "Points"
+writer.FieldAssociation = "Point Data"
 writer.UpdatePipeline()
 
 # create a new 'CSV Reader'
