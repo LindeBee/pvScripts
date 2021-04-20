@@ -44,7 +44,7 @@ renderView1.OSPRayMaterialLibrary = materialLibrary1
 # Create a new 'SpreadSheet View'
 boxChartView1 = CreateView('BoxChartView')
 boxChartView1.ViewSize = [903, 446]
-boxChartView1.LeftAxisCustomRange = 0
+boxChartView1.LeftAxisUseCustomRange = 0
 
 SetActiveView(None)
 
