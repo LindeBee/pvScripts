@@ -162,7 +162,7 @@ descriptiveStatistics1 = DescriptiveStatistics(registrationName='DescriptiveStat
 descriptiveStatistics1.VariablesofInterest = ['error']
 
 writer = CreateWriter("./results/stats.csv")
-writer.FieldAssociation = "Row Data"
+writer.FieldAssociation = "Rows"
 writer.UpdatePipeline()
 
 # ----------------------------------------------------------------
