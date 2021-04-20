@@ -42,11 +42,8 @@ renderView1.BackEnd = 'OSPRay raycaster'
 renderView1.OSPRayMaterialLibrary = materialLibrary1
 
 # Create a new 'SpreadSheet View'
-spreadSheetView1 = CreateView('SpreadSheetView')
-spreadSheetView1.ColumnToSort = 'M2'
-spreadSheetView1.BlockSize = 1024
-spreadSheetView1.HiddenColumnLabels = ['Block Number', 'Cardinality', 'Row ID', 'Block Name', 'M2', 'M3', 'M4']
-spreadSheetView1.FieldAssociation = 'Row Data'
+boxChartView1 = CreateView('BoxChartView')
+boxChartView1.ViewSize = [903, 446]
 
 SetActiveView(None)
 
@@ -59,7 +56,7 @@ layout1 = CreateLayout(name='Layout #1')
 layout1.SplitVertical(0, 0.430233)
 layout1.SplitHorizontal(1, 0.509804)
 layout1.AssignView(3, renderView1)
-layout1.AssignView(4, spreadSheetView1)
+layout1.AssignView(4, boxChartView1)
 layout1.SplitVertical(2, 0.58333)
 layout1.AssignView(5, lineChartView1)
 layout1.AssignView(6, lineChartView2)
@@ -156,24 +153,22 @@ plotData3 = PlotData(registrationName='PlotData3', Input=maskPoints1)
 # create a new 'Plot Data'
 plotData1 = PlotData(registrationName='PlotData1', Input=maskPoints1)
 
-# create a new 'Descriptive Statistics'
-descriptiveStatistics1 = DescriptiveStatistics(registrationName='DescriptiveStatistics1', Input=umagErrorCalculator,
-    ModelInput=None)
-descriptiveStatistics1.VariablesofInterest = ['error']
+# create a new 'Compute Quartiles'
+computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input=umagErrorCalculator)
 
-# create a new 'Calculator'
-calculator1 = Calculator(registrationName='Calculator1', Input=descriptiveStatistics1)
-calculator1.AttributeType = 'Row Data'
-calculator1.ResultArrayName = 'results'
-calculator1.Function = 'Mean'
-
-writer = CreateWriter("./results/stats.csv", calculator1)
-writer.FieldAssociation = "Row Data"
-writer.UpdatePipeline()
 
 # ----------------------------------------------------------------
 # setup the visualization in view 'lineChartView1'
 # ----------------------------------------------------------------
+
+# show data from computeQuartiles1
+computeQuartiles1Display = Show(computeQuartiles1, boxChartView1, 'BoxChartRepresentation')
+
+# trace defaults for the display properties.
+computeQuartiles1Display.CompositeDataSetIndex = 0
+computeQuartiles1Display.FieldAssociation = 'Point Data'
+computeQuartiles1Display.SeriesVisibility = ['error']
+computeQuartiles1Display.SeriesColor = ['error', '0', '0', '0']
 
 # show data from plotData3
 plotData3Display = Show(plotData3, lineChartView1, 'XYChartRepresentation')
