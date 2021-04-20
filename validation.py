@@ -166,7 +166,7 @@ computeQuartiles1Display = Show(computeQuartiles1, boxChartView1, 'BoxChartRepre
 
 # trace defaults for the display properties.
 computeQuartiles1Display.CompositeDataSetIndex = 0
-computeQuartiles1Display.FieldAssociation = 'Point Data'
+computeQuartiles1Display.FieldAssociation = 'Row Data'
 computeQuartiles1Display.SeriesVisibility = ['error']
 computeQuartiles1Display.SeriesColor = ['error', '0', '0', '0']
 
