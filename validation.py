@@ -154,11 +154,10 @@ plotData3 = PlotData(registrationName='PlotData3', Input=maskPoints1)
 plotData1 = PlotData(registrationName='PlotData1', Input=maskPoints1)
 
 # create a new 'Compute Quartiles'
-computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input=umagErrorCalculator)
-
+computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input=resToPoints)
 
 # ----------------------------------------------------------------
-# setup the visualization in view 'lineChartView1'
+# setup the visualization in view 'boxChartView1'
 # ----------------------------------------------------------------
 
 # show data from computeQuartiles1
@@ -167,8 +166,12 @@ computeQuartiles1Display = Show(computeQuartiles1, boxChartView1, 'BoxChartRepre
 # trace defaults for the display properties.
 computeQuartiles1Display.CompositeDataSetIndex = 0
 computeQuartiles1Display.FieldAssociation = 'Row Data'
-computeQuartiles1Display.SeriesVisibility = ['error']
-computeQuartiles1Display.SeriesColor = ['error', '0', '0', '0']
+computeQuartiles1Display.SeriesVisibility = ['u:0']
+computeQuartiles1Display.SeriesColor = ['u:0', '0', '0', '0']
+
+# ----------------------------------------------------------------
+# setup the visualization in view 'lineChartView1'
+# ----------------------------------------------------------------
 
 # show data from plotData3
 plotData3Display = Show(plotData3, lineChartView1, 'XYChartRepresentation')
