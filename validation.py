@@ -281,16 +281,6 @@ errorLUTColorBar.Visibility = 1
 umagErrorCalculatorDisplay.SetScalarBarVisibility(renderView1, True)
 
 # ----------------------------------------------------------------
-# setup the visualization in view 'spreadSheetView1'
-# ----------------------------------------------------------------
-
-# show data from descriptiveStatistics1
-descriptiveStatistics1Display = Show(descriptiveStatistics1, spreadSheetView1, 'SpreadSheetRepresentation')
-
-# trace defaults for the display properties.
-descriptiveStatistics1Display.CompositeDataSetIndex = [1]
-
-# ----------------------------------------------------------------
 # setup color maps and opacity mapes used in the visualization
 # note: the Get..() functions create a new object, if needed
 # ----------------------------------------------------------------
