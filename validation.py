@@ -161,6 +161,10 @@ descriptiveStatistics1 = DescriptiveStatistics(registrationName='DescriptiveStat
     ModelInput=None)
 descriptiveStatistics1.VariablesofInterest = ['error']
 
+writer = CreateWriter("./results/stats.csv")
+writer.FieldAssociation = "Row Data"
+writer.UpdatePipeline()
+
 # ----------------------------------------------------------------
 # setup the visualization in view 'lineChartView1'
 # ----------------------------------------------------------------
