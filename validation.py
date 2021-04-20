@@ -96,12 +96,9 @@ rescaleResults = Calculator(registrationName='RescaleResults', Input=uxdmf)
 rescaleResults.CoordinateResults = 1
 rescaleResults.Function = 'coords/2.' # divide coords by height building
 
-view = CreateView("SpreadSheetView")
-Show()
-Render()
-exporters = servermanager.createModule("exporters")
-csvExporter = exporters.CSVExporter(FileName="./dataset.csv", View=view)
-csvExporter.Write()
+writer = CreateWriter("./dataset.csv", rescaleResults)
+writer.FieldAssociation = "Points"
+writer.UpdatePipeline()
 
 # create a new 'CSV Reader'
 caseHcsv = CSVReader(registrationName='CaseH_u.csv', FileName=['./pvScripts/CaseH_u.csv'])
