@@ -135,7 +135,7 @@ pointDatasetInterpolator1.Locator = 'Static Point Locator'
 appendAttributes1 = AppendAttributes(registrationName='AppendAttributes1', Input=[pointDatasetInterpolator1, translatePoints])
 
 # calcultate magnitude of average flow
-umagCalculator = Calculator(registrationName = 'UmagCalculator', Input = AppendAttributes1)
+umagCalculator = Calculator(registrationName = 'UmagCalculator', Input = appendAttributes1)
 umagErrorCalculator.ResultArrayName = 'u_mag'
 umagErrorCalculator.Function = 'sqrt(u:0_average^2 + u:1_average^2 + u:2_average^2)'
 
