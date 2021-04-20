@@ -136,8 +136,8 @@ appendAttributes1 = AppendAttributes(registrationName='AppendAttributes1', Input
 
 # calcultate magnitude of average flow
 umagCalculator = Calculator(registrationName = 'UmagCalculator', Input = appendAttributes1)
-umagErrorCalculator.ResultArrayName = 'u_mag'
-umagErrorCalculator.Function = 'sqrt(u:0_average^2 + u:1_average^2 + u:2_average^2)'
+umagCalculator.ResultArrayName = 'u_mag'
+umagCalculator.Function = 'sqrt(u:0_average^2 + u:1_average^2 + u:2_average^2)'
 
 # calculate error on magnitude
 umagErrorCalculator = Calculator(registrationName='UmagErrorCalculator', Input=umagCalculator)
