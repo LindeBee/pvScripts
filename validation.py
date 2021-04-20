@@ -94,7 +94,7 @@ uxdmf.PointArrayStatus = ['u']
 # create a new 'Calculator'
 rescaleResults = Calculator(registrationName='RescaleResults', Input=uxdmf)
 rescaleResults.CoordinateResults = 1
-rescaleResults.Function = 'coords/2.' # divide coords by height building
+rescaleResults.Function = 'coords./2.' # divide coords by height building
 
 writer = CreateWriter("./dataset.csv", rescaleResults)
 writer.FieldAssociation = "Points"
