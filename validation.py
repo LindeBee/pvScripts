@@ -140,7 +140,7 @@ umagCalculator.Function = 'sqrt(u:0_average^2 + u:1_average^2 + u:2_average^2)'
 # create a new 'Calculator'
 umagErrorCalculator = Calculator(registrationName='UmagErrorCalculator', Input=umagCalculator)
 umagErrorCalculator.ResultArrayName = 'error'
-umagErrorCalculator.Function = 'abs(mag(<U/uH>)-mag(U)/mag(<U/uH>)'
+umagErrorCalculator.Function = 'abs(mag(<U/uH>)-mag(U))/mag(<U/uH>)'
 
 # create a new 'Compute Quartiles'
 computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input=umagErrorCalculator)
