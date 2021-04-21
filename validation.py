@@ -135,7 +135,7 @@ appendAttributes1 = AppendAttributes(registrationName='AppendAttributes1', Input
 # create a new 'Calculator'
 umagCalculator = Calculator(registrationName='UmagCalculator', Input=appendAttributes1)
 umagCalculator.ResultArrayName = 'U'
-umagCalculator.Function = 'sqrt(u:0_average^2 + u:1_average^2 + u:2_average^2)'
+umagCalculator.Function = 'iHat*u:0_average + jHat*u:1_average + kHat*u:2_average'
 
 # create a new 'Calculator'
 umagErrorCalculator = Calculator(registrationName='UmagErrorCalculator', Input=umagCalculator)
