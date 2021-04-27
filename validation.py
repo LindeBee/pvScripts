@@ -23,7 +23,9 @@ lineChartView2 = CreateView('XYChartView')
 lineChartView2.ViewSize = [1988, 250]
 lineChartView2.ShowLegend = 0
 lineChartView2.LegendPosition = [1880, 173]
-lineChartView2.LeftAxisLogScale =  1
+lineChartView2.LeftAxisUseCustomRange = 1
+lineChartView2.LeftAxisRangeMaximum = 2
+lineChartView2.LeftAxisRangeMinimum = 0
 
 # get the material library
 materialLibrary1 = GetMaterialLibrary()
@@ -141,7 +143,7 @@ umagCalculator.Function = 'iHat*u:0_average + jHat*u:1_average + kHat*u:2_averag
 # create a new 'Calculator'
 umagErrorCalculator = Calculator(registrationName='UmagErrorCalculator', Input=umagCalculator)
 umagErrorCalculator.ResultArrayName = 'error'
-umagErrorCalculator.Function = 'abs(mag(<U/uH>)-mag(U))/mag(<U/uH>)'
+umagErrorCalculator.Function = '(abs(mag(<U/uH>)-mag(U)))/mag(<U/uH>)'
 
 # create a new 'Compute Quartiles'
 computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input=umagErrorCalculator)
