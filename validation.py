@@ -23,6 +23,7 @@ lineChartView2 = CreateView('XYChartView')
 lineChartView2.ViewSize = [1988, 250]
 lineChartView2.ShowLegend = 0
 lineChartView2.LegendPosition = [1880, 173]
+lineChartView2.LeftAxisLogScale =  1
 
 # get the material library
 materialLibrary1 = GetMaterialLibrary()
