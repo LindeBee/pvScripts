@@ -419,6 +419,9 @@ SetActiveSource(text4)
 # ----------------------------------------------------------------
 t = uxdmf.TimestepValues[-1]
 renderView1.ViewTime = t
+renderView2.ViewTime = t
+renderView3.ViewTime = t
+renderView4.ViewTime = t
 
 import os.path
 from os import path
