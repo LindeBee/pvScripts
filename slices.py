@@ -426,18 +426,22 @@ renderView4.ViewTime = t
 import os.path
 from os import path
 
+SetActiveSource(slice1)
 sm = servermanager.Fetch(slice1)
 r = sm.GetPointData().GetArray('u').GetRange(0)
 uLUT = GetColorTransferFunction('u')
 uLUT.RescaleTransferFunction(r[0], r[1])
+SetActiveSource(slice3)
 sm = servermanager.Fetch(slice3)
 r = sm.GetPointData().GetArray('u').GetRange(0)
 uLUT_1 = GetColorTransferFunction('u')
 uLUT_1.RescaleTransferFunction(r[0], r[1])
+SetActiveSource(slice4)
 sm = servermanager.Fetch(slice4)
 r = sm.GetPointData().GetArray('u').GetRange(0)
 uLUT_2 = GetColorTransferFunction('u')
 uLUT_2.RescaleTransferFunction(r[0], r[1])
+SetActiveSource(slice2)
 sm = servermanager.Fetch(slice2)
 r = sm.GetPointData().GetArray('u').GetRange(0)
 uLUT_3 = GetColorTransferFunction('u')
