@@ -264,7 +264,7 @@ errorLUTColorBar = GetScalarBar(errorLUT, renderView1)
 errorLUTColorBar.WindowLocation = 'UpperRightCorner'
 errorLUTColorBar.Title = 'error'
 errorLUTColorBar.ComponentTitle = ''
-errorLUTColorBar..RescaleTransferFunction(0., 2.)
+errorLUTColorBar.RescaleTransferFunction(0., 2.)
 
 # set color bar visibility
 errorLUTColorBar.Visibility = 1
