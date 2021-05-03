@@ -135,15 +135,15 @@ pointDatasetInterpolator1.Kernel.NumberOfPoints = 3
 # create a new 'Append Attributes'
 appendAttributes1 = AppendAttributes(registrationName='AppendAttributes1', Input=[pointDatasetInterpolator1, translatePoints])
 
-## create a new 'Calculator'
-#umagCalculator = Calculator(registrationName='UmagCalculator', Input=appendAttributes1)
-#umagCalculator.ResultArrayName = 'U'
-#umagCalculator.Function = 'iHat*u:0_average + jHat*u:1_average + kHat*u:2_average'
+# create a new 'Calculator'
+umagCalculator = Calculator(registrationName='UmagCalculator', Input=appendAttributes1)
+umagCalculator.ResultArrayName = 'U'
+umagCalculator.Function = 'iHat*u_average:0 + jHat*u_average:1 + kHat*u_average:2'
 
 # create a new 'Calculator'
-umagErrorCalculator = Calculator(registrationName='UmagErrorCalculator', Input=AppendAttributes1)
+umagErrorCalculator = Calculator(registrationName='UmagErrorCalculator', Input=umagCalculator)
 umagErrorCalculator.ResultArrayName = 'error'
-umagErrorCalculator.Function = '(abs(mag(<U/uH>)-u_average_Magnitude))/mag(<U/uH>)'
+umagErrorCalculator.Function = '(abs(mag(<U/uH>)-mag(U)))/mag(<U/uH>)'
 
 # create a new 'Compute Quartiles'
 computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input=umagErrorCalculator)
