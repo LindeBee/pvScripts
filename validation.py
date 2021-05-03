@@ -80,10 +80,19 @@ rescaleResults = Calculator(registrationName='RescaleResults', Input=uxdmf)
 rescaleResults.CoordinateResults = 1
 rescaleResults.Function = 'iHat*(coordsX/2) +jHat*(coordsY/2) +kHat*(coordsZ/2)'
 
+# create a new 'Temporal Statistics'
+temporalStatistics1 = TemporalStatistics(registrationName='TemporalStatistics1', Input=rescaleResults)
+temporalStatistics1.ComputeMinimum = 0
+temporalStatistics1.ComputeMaximum = 0
+
+# create a new 'Calculator'
+calculator_TKE = Calculator(registrationName='Calculator_TKE', Input=temporalStatistics1)
+calculator_TKE.ResultArrayName = 'k'
+calculator_TKE.Function = 'sqrt(u:0_stddev^2+u:1_stddev^2+u:2_stddev^2)'
+
 writer = CreateWriter("./dataset.csv")
 writer.FieldAssociation = "Point Data"
 writer.UpdatePipeline()
-
 
 # create a new 'CSV Reader'
 caseH_ucsv = CSVReader(registrationName='CaseH_u.csv', FileName=['./pvScripts/CaseH_u.csv'])
@@ -113,18 +122,8 @@ resToPoints.XColumn = 'Points:0'
 resToPoints.YColumn = 'Points:1'
 resToPoints.ZColumn = 'Points:2'
 
-# create a new 'Temporal Statistics'
-temporalStatistics1 = TemporalStatistics(registrationName='TemporalStatistics1', Input=resToPoints)
-temporalStatistics1.ComputeMinimum = 0
-temporalStatistics1.ComputeMaximum = 0
-
-# create a new 'Calculator'
-calculator_TKE = Calculator(registrationName='Calculator_TKE', Input=temporalStatistics1)
-calculator_TKE.ResultArrayName = 'k'
-calculator_TKE.Function = 'sqrt(u:0_stddev^2+u:1_stddev^2+u:2_stddev^2)'
-
 # create a new 'Point Dataset Interpolator'
-pointDatasetInterpolator1 = PointDatasetInterpolator(registrationName='PointDatasetInterpolator1', Input=calculator_TKE,
+pointDatasetInterpolator1 = PointDatasetInterpolator(registrationName='PointDatasetInterpolator1', Input=resToPoints,
     Source=translatePoints)
 pointDatasetInterpolator1.Kernel = 'LinearKernel'
 pointDatasetInterpolator1.Locator = 'Static Point Locator'
@@ -136,15 +135,15 @@ pointDatasetInterpolator1.Kernel.NumberOfPoints = 3
 # create a new 'Append Attributes'
 appendAttributes1 = AppendAttributes(registrationName='AppendAttributes1', Input=[pointDatasetInterpolator1, translatePoints])
 
-# create a new 'Calculator'
-umagCalculator = Calculator(registrationName='UmagCalculator', Input=appendAttributes1)
-umagCalculator.ResultArrayName = 'U'
-umagCalculator.Function = 'iHat*u:0_average + jHat*u:1_average + kHat*u:2_average'
+## create a new 'Calculator'
+#umagCalculator = Calculator(registrationName='UmagCalculator', Input=appendAttributes1)
+#umagCalculator.ResultArrayName = 'U'
+#umagCalculator.Function = 'iHat*u:0_average + jHat*u:1_average + kHat*u:2_average'
 
 # create a new 'Calculator'
-umagErrorCalculator = Calculator(registrationName='UmagErrorCalculator', Input=umagCalculator)
+umagErrorCalculator = Calculator(registrationName='UmagErrorCalculator', Input=AppendAttributes1)
 umagErrorCalculator.ResultArrayName = 'error'
-umagErrorCalculator.Function = '(abs(mag(<U/uH>)-mag(U)))/mag(<U/uH>)'
+umagErrorCalculator.Function = '(abs(mag(<U/uH>)-u_average_Magnitude))/mag(<U/uH>)'
 
 # create a new 'Compute Quartiles'
 computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input=umagErrorCalculator)
