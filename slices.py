@@ -426,6 +426,7 @@ renderView4.ViewTime = t
 import os.path
 from os import path
 
+SetActiveView(renderView2)
 SetActiveSource(slice1)
 sm = servermanager.Fetch(slice1)
 r = sm.GetPointData().GetArray('u').GetRange(0)
