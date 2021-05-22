@@ -2,7 +2,7 @@
 
 #### import the simple module from the paraview
 from paraview.simple import *
-import geo_var
+import ./geo_var
 #### disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
 
