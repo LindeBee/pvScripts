@@ -78,7 +78,7 @@ renderView4.CameraFocalDisk = 1.0
 renderView4.CameraParallelScale = 1.6589780663644933
 renderView4.BackEnd = 'OSPRay raycaster'
 renderView4.OSPRayMaterialLibrary = materialLibrary1
-renderView14
+renderView4.Background = [0.0, 0.0, 0.0]
 
 # Create a new 'Render View'
 renderView5 = CreateView('RenderView')
