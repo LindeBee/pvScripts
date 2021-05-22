@@ -28,6 +28,7 @@ renderView1.CameraFocalDisk = 1.0
 renderView1.CameraParallelScale = 1.946657309763115
 renderView1.BackEnd = 'OSPRay raycaster'
 renderView1.OSPRayMaterialLibrary = materialLibrary1
+renderView1.Background = [0.0, 0.0, 0.0]
 
 # Create a new 'Render View'
 renderView2 = CreateView('RenderView')
@@ -43,6 +44,7 @@ renderView2.CameraFocalDisk = 1.0
 renderView2.CameraParallelScale = 2.2440035064644643
 renderView2.BackEnd = 'OSPRay raycaster'
 renderView2.OSPRayMaterialLibrary = materialLibrary1
+renderView2.Background = [0.0, 0.0, 0.0]
 
 # Create a new 'Render View'
 renderView3 = CreateView('RenderView')
@@ -59,6 +61,7 @@ renderView3.CameraFocalDisk = 1.0
 renderView3.CameraParallelScale = 1.6383894804017636
 renderView3.BackEnd = 'OSPRay raycaster'
 renderView3.OSPRayMaterialLibrary = materialLibrary1
+renderView3.Background = [0.0, 0.0, 0.0]
 
 # Create a new 'Render View'
 renderView4 = CreateView('RenderView')
@@ -75,6 +78,7 @@ renderView4.CameraFocalDisk = 1.0
 renderView4.CameraParallelScale = 1.6589780663644933
 renderView4.BackEnd = 'OSPRay raycaster'
 renderView4.OSPRayMaterialLibrary = materialLibrary1
+renderView14
 
 # Create a new 'Render View'
 renderView5 = CreateView('RenderView')
@@ -89,6 +93,7 @@ renderView5.CameraFocalDisk = 1.0
 renderView5.CameraParallelScale = 3.4670524780161247
 renderView5.BackEnd = 'OSPRay raycaster'
 renderView5.OSPRayMaterialLibrary = materialLibrary1
+renderView5.Background = [0.0, 0.0, 0.0]
 
 SetActiveView(None)
 
