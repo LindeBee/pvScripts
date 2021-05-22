@@ -95,7 +95,7 @@ writer.FieldAssociation = "Point Data"
 writer.UpdatePipeline()
 
 # create a new 'CSV Reader'
-caseH_ucsv = CSVReader(registrationName='CaseH_u.csv', FileName=['./pvScripts/CaseH_u.csv'])
+caseH_ucsv = CSVReader(registrationName='CaseH_u.csv', FileName=['./pvScripts/112iso.csv'])
 
 # create a new 'Table To Points'
 valiToPoints = TableToPoints(registrationName='ValiToPoints', Input=caseH_ucsv)
