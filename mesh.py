@@ -53,6 +53,8 @@ Show(uxdmf)
 (xmin,xmax,ymin,ymax,zmin,zmax) = GetActiveSource().GetDataInformation().GetBounds()
 Hide(uxdmf)
 
+elems = uxdmf.GetDataInformation().GetNumberOfPoints()
+
 # create a new 'Extract Surface'
 extractSurface1 = ExtractSurface(registrationName='ExtractSurface1', Input=uxdmf)
 
@@ -150,7 +152,7 @@ SetActiveSource(clip1)
 import os.path
 from os import path
 
-print("Rendering: mesh")
+print("Rendering: mesh with "+ str(elems)+ " elements")
 SaveScreenshot('./images/mesh.png', renderView1, ImageResolution=[1818, 1146])
 
 print("Exiting")
