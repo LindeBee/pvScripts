@@ -201,32 +201,32 @@ tke0 = PlotOverLine(registrationName='PlotOverLine3', Input=calculatorTKE,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-tke0.Source.Point1 = [(xmax-xmin)/2, 0.*zmax, zmin]
-tke0.Source.Point2 = [(xmax-xmin)/2, 0.*zmax, zmax]
+tke0.Source.Point1 = [0., 0.*zmax, zmin]
+tke0.Source.Point2 = [0., 0.*zmax, zmax]
 
 # create a new 'Plot Over Line'
 tke025 = PlotOverLine(registrationName='PlotOverLine1', Input=calculatorTKE,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-tke025.Source.Point1 = [(xmax-xmin)/2, 0.25*zmax, zmin]
-tke025.Source.Point2 = [(xmax-xmin)/2, 0.25*zmax, zmax]
+tke025.Source.Point1 = [0., 0.25*zmax, zmin]
+tke025.Source.Point2 = [0., 0.25*zmax, zmax]
 
 # create a new 'Plot Over Line'
 tke05 = PlotOverLine(registrationName='PlotOverLine4', Input=calculatorTKE,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-tke05.Source.Point1 = [(xmax-xmin)/2, 0.5*zmax, zmin]
-tke05.Source.Point2 = [(xmax-xmin)/2, 0.5*zmax, zmax]
+tke05.Source.Point1 = [0., 0.5*zmax, zmin]
+tke05.Source.Point2 = [0., 0.5*zmax, zmax]
 
 # create a new 'Plot Over Line'
 tke075 = PlotOverLine(registrationName='PlotOverLine2', Input=calculatorTKE,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-tke075.Source.Point1 = [(xmax-xmin)/2, 0.75*zmax, zmin]
-tke075.Source.Point2 = [(xmax-xmin)/2, 0.75*zmax, zmax]
+tke075.Source.Point1 = [0., 0.75*zmax, zmin]
+tke075.Source.Point2 = [0., 0.75*zmax, zmax]
 
 
 # create a new 'Calculator'
@@ -245,72 +245,72 @@ mvh002 = PlotOverLine(registrationName='mvh0.02', Input=meanvelstats,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-mvh002.Source.Point1 = [(xmax-xmin)/2, ymin, 0.02*zmax]
-mvh002.Source.Point2 = [(xmax-xmin)/2, ymax, 0.02*zmax]
+mvh002.Source.Point1 = [0., ymin, 0.02*zmax]
+mvh002.Source.Point2 = [0., ymax, 0.02*zmax]
 
 # create a new 'Plot Over Line'
 mvh005 = PlotOverLine(registrationName='mvh0.05', Input=meanvelstats,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-mvh005.Source.Point1 = [(xmax-xmin)/2, ymin, 0.05*zmax]
-mvh005.Source.Point2 = [(xmax-xmin)/2, ymax, 0.05*zmax]
+mvh005.Source.Point1 = [0., ymin, 0.05*zmax]
+mvh005.Source.Point2 = [0., ymax, 0.05*zmax]
 
 # create a new 'Plot Over Line'
 mvh01 = PlotOverLine(registrationName='mvh0.1', Input=meanvelstats,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-mvh01.Source.Point1 = [(xmax-xmin)/2, ymin, 0.1*zmax]
-mvh01.Source.Point2 = [(xmax-xmin)/2, ymax, 0.1*zmax]
+mvh01.Source.Point1 = [0., ymin, 0.1*zmax]
+mvh01.Source.Point2 = [0., ymax, 0.1*zmax]
 
 # create a new 'Plot Over Line'
 mvh03 = PlotOverLine(registrationName='mvh.0.3', Input=meanvelstats,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-mvh03.Source.Point1 = [(xmax-xmin)/2, ymin, 0.3*zmax]
-mvh03.Source.Point2 = [(xmax-xmin)/2, ymax, 0.3*zmax]
+mvh03.Source.Point1 = [0., ymin, 0.3*zmax]
+mvh03.Source.Point2 = [0., ymax, 0.3*zmax]
 
 # create a new 'Plot Over Line'
 mvh07 = PlotOverLine(registrationName='mvh.0.7', Input=meanvelstats,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-mvh07.Source.Point1 = [(xmax-xmin)/2, ymin, 0.7*zmax]
-mvh07.Source.Point2 = [(xmax-xmin)/2, ymax, 0.7*zmax]
+mvh07.Source.Point1 = [0., ymin, 0.7*zmax]
+mvh07.Source.Point2 = [0., ymax, 0.7*zmax]
 
 # create a new 'Plot Over Line'
 mvv0 = PlotOverLine(registrationName='mvv0', Input=meanvelstats,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-mvv0.Source.Point1 = [(xmax-xmin)/2, 0.0*zmax, zmin]
-mvv0.Source.Point2 = [(xmax-xmin)/2, 0.0*zmax, zmax]
+mvv0.Source.Point1 = [0., 0.0*zmax, zmin]
+mvv0.Source.Point2 = [0., 0.0*zmax, zmax]
 
 # create a new 'Plot Over Line'
 mvv025 = PlotOverLine(registrationName='mvv0.25', Input=meanvelstats,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-mvv025.Source.Point1 = [(xmax-xmin)/2, 0.25*zmax, zmin]
-mvv025.Source.Point2 = [(xmax-xmin)/2, 0.25*zmax, zmax]
+mvv025.Source.Point1 = [0., 0.25*zmax, zmin]
+mvv025.Source.Point2 = [0., 0.25*zmax, zmax]
 
 # create a new 'Plot Over Line'
 mvv05 = PlotOverLine(registrationName='mvv0.5', Input=meanvelstats,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-mvv05.Source.Point1 = [(xmax-xmin)/2, 0.5*zmax, zmin]
-mvv05.Source.Point2 = [(xmax-xmin)/2, 0.5*zmax, zmax]
+mvv05.Source.Point1 = [0., 0.5*zmax, zmin]
+mvv05.Source.Point2 = [0., 0.5*zmax, zmax]
 
 # create a new 'Plot Over Line'
 mvv075 = PlotOverLine(registrationName='mvv0.75', Input=meanvelstats,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-mvv075.Source.Point1 = [(xmax-xmin)/2, 0.75*zmax, zmin]
-mvv075.Source.Point2 = [(xmax-xmin)/2, 0.75*zmax, zmax]
+mvv075.Source.Point1 = [0., 0.75*zmax, zmin]
+mvv075.Source.Point2 = [0., 0.75*zmax, zmax]
 
 
 # ----------------------------------------------------------------
