@@ -55,8 +55,8 @@ Show(uxdmf)
 (xmin,xmax,ymin,ymax,zmin,zmax) = GetActiveSource().GetDataInformation().GetBounds()
 Hide(uxdmf)
 
-renderView1.CameraPosition = [-xmax/24., -xmax/12., xmax/24.]
-renderView1.CameraFocalPoint = [0., 0., xmax/300]
+renderView1.CameraPosition = [-zmax/2., -zmax/4., zmax/2.]
+renderView1.CameraFocalPoint = [0., 0., 1.]
 renderView1.CameraViewUp = [0., 0., 1.]
 
 # create a new 'Extract Surface'
@@ -69,8 +69,8 @@ streamTracer1.Vectors = ['POINTS', 'u']
 streamTracer1.MaximumStreamlineLength = 24.0
 
 # init the 'Point Cloud' selected for 'SeedType'
-streamTracer1.SeedType.Center = [0.0, 0.0, 0.0]
-streamTracer1.SeedType.Radius = xmax/50
+streamTracer1.SeedType.Center = [-0.5, 0.0, 0.0]
+streamTracer1.SeedType.Radius = 3
 streamTracer1.SeedType.NumberOfPoints = 300
 
 # create a new 'Clip'
@@ -80,11 +80,11 @@ clip3.HyperTreeGridClipper = 'Plane'
 clip3.Scalars = ['POINTS', '']
 
 # init the 'Box' selected for 'ClipType'
-clip3.ClipType.Position = [-12.0, -12.0, 0.0]
-clip3.ClipType.Length = [24.0, 24.0, xmax/2]
+clip3.ClipType.Position = [xmin, ymin, 0.0]
+clip3.ClipType.Length = [xmax-xmin, ymax-ymin, zmax/2]
 
 # init the 'Plane' selected for 'HyperTreeGridClipper'
-clip3.HyperTreeGridClipper.Origin = [0.0, 0.0, 6.0]
+clip3.HyperTreeGridClipper.Origin = [0.0, 0.0, 0.0]
 
 # ----------------------------------------------------------------
 # setup the visualization in view 'renderView1'

@@ -2,6 +2,7 @@
 
 #### import the simple module from the paraview
 from paraview.simple import *
+
 #### disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
 
@@ -21,22 +22,22 @@ error.TopAxisRangeMaximum = 6.66
 mvh = CreateView('XYChartView')
 mvh.ViewSize = [904, 534]
 mvh.LegendPosition = [728, 229]
-mvh.LeftAxisTitle = 'mean streamwise velocity'
+mvh.LeftAxisTitle = '<u/u_H>'
 mvh.BottomAxisTitle = 'y'
 
 # Create a new 'Line Chart View'
 mvv = CreateView('XYChartView')
 mvv.ViewSize = [904, 534]
 mvv.LegendPosition = [674, 369]
-mvv.LeftAxisTitle = 'height'
-mvv.BottomAxisTitle = 'mean streamwise velocity'
+mvv.LeftAxisTitle = 'z'
+mvv.BottomAxisTitle = '<u/u_H>'
 
 # Create a new 'Line Chart View'
 tke = CreateView('XYChartView')
 tke.ViewSize = [904, 534]
 tke.LegendPosition = [674, 395]
-tke.LeftAxisTitle = 'height'
-tke.BottomAxisTitle = 'turbulent kinetic energy'
+tke.LeftAxisTitle = 'z'
+tke.BottomAxisTitle = '<tke/u_H>'
 
 SetActiveView(None)
 
@@ -316,6 +317,23 @@ mvv075.Source.Point2 = [(xmax-xmin)/2, 0.75*zmax, zmax]
 # setup the visualization in view 'mvh'
 # ----------------------------------------------------------------
 
+# show data from mvh002
+mvh002Display = Show(mvh002, mvh, 'XYChartRepresentation')
+
+# trace defaults for the display properties.
+mvh002Display.CompositeDataSetIndex = [0]
+mvh002Display.UseIndexForXAxis = 0
+mvh002Display.XArrayName = 'Points_Y'
+mvh002Display.SeriesVisibility = ['u_x_average']
+mvh002Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 0.12', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+mvh002Display.SeriesColor = ['arc_length', '0', '0', '0', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '0.6666666666666666', '0.3333333333333333', '1', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
+mvh002Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
+mvh002Display.SeriesLabelPrefix = ''
+mvh002Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '1', 'arc_length', '1', 'u_average_Magnitude', '1', 'u_average_X', '1', 'u_average_Y', '1', 'u_average_Z', '1', 'u_x_average', '1', 'vtkValidPointMask', '1']
+mvh002Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'u_average_Magnitude', '2', 'u_average_X', '2', 'u_average_Y', '2', 'u_average_Z', '2', 'u_x_average', '2', 'vtkValidPointMask', '2']
+mvh002Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
+mvh002Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'u_average_Magnitude', '4', 'u_average_X', '4', 'u_average_Y', '4', 'u_average_Z', '4', 'u_x_average', '4', 'vtkValidPointMask', '4']
+
 # show data from mvh005
 mvh005Display = Show(mvh005, mvh, 'XYChartRepresentation')
 
@@ -324,7 +342,7 @@ mvh005Display.CompositeDataSetIndex = [0]
 mvh005Display.UseIndexForXAxis = 0
 mvh005Display.XArrayName = 'Points_Y'
 mvh005Display.SeriesVisibility = ['u_x_average']
-mvh005Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 0.05', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+mvh005Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 0.3', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
 mvh005Display.SeriesColor = ['arc_length', '0', '0', '0', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '0', '0.6666666666666666', '1', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
 mvh005Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
 mvh005Display.SeriesLabelPrefix = ''
@@ -341,7 +359,7 @@ mvh01Display.CompositeDataSetIndex = [0]
 mvh01Display.UseIndexForXAxis = 0
 mvh01Display.XArrayName = 'Points_Y'
 mvh01Display.SeriesVisibility = ['u_x_average']
-mvh01Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 0.1', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+mvh01Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 0.6', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
 mvh01Display.SeriesColor = ['arc_length', '0', '0', '0', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '0.3333333333333333', '0.6666666666666666', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
 mvh01Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
 mvh01Display.SeriesLabelPrefix = ''
@@ -358,7 +376,7 @@ mvh03Display.CompositeDataSetIndex = [0]
 mvh03Display.UseIndexForXAxis = 0
 mvh03Display.XArrayName = 'Points_Y'
 mvh03Display.SeriesVisibility = ['u_x_average']
-mvh03Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 0.3', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+mvh03Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 1.8', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
 mvh03Display.SeriesColor = ['arc_length', '0', '0', '0', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '1', '0.6666666666666666', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
 mvh03Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
 mvh03Display.SeriesLabelPrefix = ''
@@ -375,7 +393,7 @@ mvh07Display.CompositeDataSetIndex = [0]
 mvh07Display.UseIndexForXAxis = 0
 mvh07Display.XArrayName = 'Points_Y'
 mvh07Display.SeriesVisibility = ['u_x_average']
-mvh07Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 0.7', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+mvh07Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 4.2', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
 mvh07Display.SeriesColor = ['arc_length', '0', '0', '0', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '1', '0.3333333333333333', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
 mvh07Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
 mvh07Display.SeriesLabelPrefix = ''
@@ -383,23 +401,6 @@ mvh07Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Point
 mvh07Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'u_average_Magnitude', '2', 'u_average_X', '2', 'u_average_Y', '2', 'u_average_Z', '2', 'u_x_average', '2', 'vtkValidPointMask', '2']
 mvh07Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
 mvh07Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'u_average_Magnitude', '4', 'u_average_X', '4', 'u_average_Y', '4', 'u_average_Z', '4', 'u_x_average', '4', 'vtkValidPointMask', '4']
-
-# show data from mvh002
-mvh002Display = Show(mvh002, mvh, 'XYChartRepresentation')
-
-# trace defaults for the display properties.
-mvh002Display.CompositeDataSetIndex = [0]
-mvh002Display.UseIndexForXAxis = 0
-mvh002Display.XArrayName = 'Points_Y'
-mvh002Display.SeriesVisibility = ['u_x_average']
-mvh002Display.SeriesLabel = ['arc_length', 'arc_length', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'z/H = 0.02', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
-mvh002Display.SeriesColor = ['arc_length', '0', '0', '0', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '0.6666666666666666', '0.3333333333333333', '1', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
-mvh002Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
-mvh002Display.SeriesLabelPrefix = ''
-mvh002Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '1', 'arc_length', '1', 'u_average_Magnitude', '1', 'u_average_X', '1', 'u_average_Y', '1', 'u_average_Z', '1', 'u_x_average', '1', 'vtkValidPointMask', '1']
-mvh002Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'u_average_Magnitude', '2', 'u_average_X', '2', 'u_average_Y', '2', 'u_average_Z', '2', 'u_x_average', '2', 'vtkValidPointMask', '2']
-mvh002Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
-mvh002Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'u_average_Magnitude', '4', 'u_average_X', '4', 'u_average_Y', '4', 'u_average_Z', '4', 'u_x_average', '4', 'vtkValidPointMask', '4']
 
 # show data from tvh002
 tvh002Display = Show(tvh002, mvh, 'XYChartRepresentation')
@@ -507,6 +508,23 @@ mvv0Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Po
 mvv0Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
 mvv0Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'u_average_Magnitude', '4', 'u_average_X', '4', 'u_average_Y', '4', 'u_average_Z', '4', 'u_x_average', '4', 'vtkValidPointMask', '4']
 
+# show data from mvv025
+mvv025Display = Show(mvv025, mvv, 'XYChartRepresentation')
+
+# trace defaults for the display properties.
+mvv025Display.CompositeDataSetIndex = [0]
+mvv025Display.UseIndexForXAxis = 0
+mvv025Display.XArrayName = 'u_x_average'
+mvv025Display.SeriesVisibility = ['arc_length']
+mvv025Display.SeriesLabel = ['arc_length', 'y/H = 1.5', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'u_x_average', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+mvv025Display.SeriesColor = ['arc_length', '1', '0.6666666666666666', '0', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '1', '0.5000076295109483', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
+mvv025Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
+mvv025Display.SeriesLabelPrefix = ''
+mvv025Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '1', 'arc_length', '1', 'u_average_Magnitude', '1', 'u_average_X', '1', 'u_average_Y', '1', 'u_average_Z', '1', 'u_x_average', '1', 'vtkValidPointMask', '1']
+mvv025Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'u_average_Magnitude', '2', 'u_average_X', '2', 'u_average_Y', '2', 'u_average_Z', '2', 'u_x_average', '2', 'vtkValidPointMask', '2']
+mvv025Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
+mvv025Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'u_average_Magnitude', '4', 'u_average_X', '4', 'u_average_Y', '4', 'u_average_Z', '4', 'u_x_average', '4', 'vtkValidPointMask', '4']
+
 # show data from mvv05
 mvv05Display = Show(mvv05, mvv, 'XYChartRepresentation')
 
@@ -515,7 +533,7 @@ mvv05Display.CompositeDataSetIndex = [0]
 mvv05Display.UseIndexForXAxis = 0
 mvv05Display.XArrayName = 'u_x_average'
 mvv05Display.SeriesVisibility = ['arc_length']
-mvv05Display.SeriesLabel = ['arc_length', 'y/H = 0.5', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'u_x_average', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+mvv05Display.SeriesLabel = ['arc_length', 'y/H = 3', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'u_x_average', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
 mvv05Display.SeriesColor = ['arc_length', '0.6666666666666666', '0.3333333333333333', '1', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '1', '0.5000076295109483', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
 mvv05Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
 mvv05Display.SeriesLabelPrefix = ''
@@ -532,7 +550,7 @@ mvv075Display.CompositeDataSetIndex = [0]
 mvv075Display.UseIndexForXAxis = 0
 mvv075Display.XArrayName = 'u_x_average'
 mvv075Display.SeriesVisibility = ['arc_length']
-mvv075Display.SeriesLabel = ['arc_length', 'y/H = 0.75', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'u_x_average', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+mvv075Display.SeriesLabel = ['arc_length', 'y/H = 4.5', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'u_x_average', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
 mvv075Display.SeriesColor = ['arc_length', '0.3333333333333333', '0.6666666666666666', '0', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '1', '0.5000076295109483', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
 mvv075Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
 mvv075Display.SeriesLabelPrefix = ''
@@ -540,23 +558,6 @@ mvv075Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Poin
 mvv075Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'u_average_Magnitude', '2', 'u_average_X', '2', 'u_average_Y', '2', 'u_average_Z', '2', 'u_x_average', '2', 'vtkValidPointMask', '2']
 mvv075Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
 mvv075Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'u_average_Magnitude', '4', 'u_average_X', '4', 'u_average_Y', '4', 'u_average_Z', '4', 'u_x_average', '4', 'vtkValidPointMask', '4']
-
-# show data from mvv025
-mvv025Display = Show(mvv025, mvv, 'XYChartRepresentation')
-
-# trace defaults for the display properties.
-mvv025Display.CompositeDataSetIndex = [0]
-mvv025Display.UseIndexForXAxis = 0
-mvv025Display.XArrayName = 'u_x_average'
-mvv025Display.SeriesVisibility = ['arc_length']
-mvv025Display.SeriesLabel = ['arc_length', 'y/H = 0.25', 'u_average_X', 'u_average_X', 'u_average_Y', 'u_average_Y', 'u_average_Z', 'u_average_Z', 'u_average_Magnitude', 'u_average_Magnitude', 'u_x_average', 'u_x_average', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
-mvv025Display.SeriesColor = ['arc_length', '1', '0.6666666666666666', '0', 'u_average_X', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_average_Y', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_average_Z', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_average_Magnitude', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_x_average', '1', '0.5000076295109483', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
-mvv025Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
-mvv025Display.SeriesLabelPrefix = ''
-mvv025Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '1', 'arc_length', '1', 'u_average_Magnitude', '1', 'u_average_X', '1', 'u_average_Y', '1', 'u_average_Z', '1', 'u_x_average', '1', 'vtkValidPointMask', '1']
-mvv025Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'u_average_Magnitude', '2', 'u_average_X', '2', 'u_average_Y', '2', 'u_average_Z', '2', 'u_x_average', '2', 'vtkValidPointMask', '2']
-mvv025Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'u_average_Magnitude', '0', 'u_average_X', '0', 'u_average_Y', '0', 'u_average_Z', '0', 'u_x_average', '0', 'vtkValidPointMask', '0']
-mvv025Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'u_average_Magnitude', '4', 'u_average_X', '4', 'u_average_Y', '4', 'u_average_Z', '4', 'u_x_average', '4', 'vtkValidPointMask', '4']
 
 # show data from tvv
 tvvDisplay = Show(tvv, mvv, 'XYChartRepresentation')
@@ -579,40 +580,6 @@ tvvDisplay.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points
 # setup the visualization in view 'tke'
 # ----------------------------------------------------------------
 
-# show data from tke025
-tke025Display = Show(tke025, tke, 'XYChartRepresentation')
-
-# trace defaults for the display properties.
-tke025Display.CompositeDataSetIndex = [0]
-tke025Display.UseIndexForXAxis = 0
-tke025Display.XArrayName = 'tke'
-tke025Display.SeriesVisibility = ['arc_length']
-tke025Display.SeriesLabel = ['arc_length', 'y/H = 0.25', 'tke', 'tke', 'u_stddev_X', 'u_stddev_X', 'u_stddev_Y', 'u_stddev_Y', 'u_stddev_Z', 'u_stddev_Z', 'u_stddev_Magnitude', 'u_stddev_Magnitude', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
-tke025Display.SeriesColor = ['arc_length', '1', '0.6666666666666666', '0', 'tke', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_stddev_X', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_stddev_Y', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_stddev_Z', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_stddev_Magnitude', '1', '0.5000076295109483', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
-tke025Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
-tke025Display.SeriesLabelPrefix = ''
-tke025Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '1', 'arc_length', '1', 'tke', '1', 'u_stddev_Magnitude', '1', 'u_stddev_X', '1', 'u_stddev_Y', '1', 'u_stddev_Z', '1', 'vtkValidPointMask', '1']
-tke025Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'tke', '2', 'u_stddev_Magnitude', '2', 'u_stddev_X', '2', 'u_stddev_Y', '2', 'u_stddev_Z', '2', 'vtkValidPointMask', '2']
-tke025Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
-tke025Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'tke', '4', 'u_stddev_Magnitude', '4', 'u_stddev_X', '4', 'u_stddev_Y', '4', 'u_stddev_Z', '4', 'vtkValidPointMask', '4']
-
-# show data from tke075
-tke075Display = Show(tke075, tke, 'XYChartRepresentation')
-
-# trace defaults for the display properties.
-tke075Display.CompositeDataSetIndex = [0]
-tke075Display.UseIndexForXAxis = 0
-tke075Display.XArrayName = 'tke'
-tke075Display.SeriesVisibility = ['arc_length']
-tke075Display.SeriesLabel = ['arc_length', 'y/H = 0.75', 'tke', 'tke', 'u_stddev_X', 'u_stddev_X', 'u_stddev_Y', 'u_stddev_Y', 'u_stddev_Z', 'u_stddev_Z', 'u_stddev_Magnitude', 'u_stddev_Magnitude', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
-tke075Display.SeriesColor = ['arc_length', '0.3333333333333333', '0.6666666666666666', '0', 'tke', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_stddev_X', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_stddev_Y', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_stddev_Z', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_stddev_Magnitude', '1', '0.5000076295109483', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
-tke075Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
-tke075Display.SeriesLabelPrefix = ''
-tke075Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '1', 'arc_length', '1', 'tke', '1', 'u_stddev_Magnitude', '1', 'u_stddev_X', '1', 'u_stddev_Y', '1', 'u_stddev_Z', '1', 'vtkValidPointMask', '1']
-tke075Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'tke', '2', 'u_stddev_Magnitude', '2', 'u_stddev_X', '2', 'u_stddev_Y', '2', 'u_stddev_Z', '2', 'vtkValidPointMask', '2']
-tke075Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
-tke075Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'tke', '4', 'u_stddev_Magnitude', '4', 'u_stddev_X', '4', 'u_stddev_Y', '4', 'u_stddev_Z', '4', 'vtkValidPointMask', '4']
-
 # show data from tke0
 tke0Display = Show(tke0, tke, 'XYChartRepresentation')
 
@@ -630,6 +597,23 @@ tke0Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Po
 tke0Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
 tke0Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'tke', '4', 'u_stddev_Magnitude', '4', 'u_stddev_X', '4', 'u_stddev_Y', '4', 'u_stddev_Z', '4', 'vtkValidPointMask', '4']
 
+# show data from tke025
+tke025Display = Show(tke025, tke, 'XYChartRepresentation')
+
+# trace defaults for the display properties.
+tke025Display.CompositeDataSetIndex = [0]
+tke025Display.UseIndexForXAxis = 0
+tke025Display.XArrayName = 'tke'
+tke025Display.SeriesVisibility = ['arc_length']
+tke025Display.SeriesLabel = ['arc_length', 'y/H = 1.5', 'tke', 'tke', 'u_stddev_X', 'u_stddev_X', 'u_stddev_Y', 'u_stddev_Y', 'u_stddev_Z', 'u_stddev_Z', 'u_stddev_Magnitude', 'u_stddev_Magnitude', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+tke025Display.SeriesColor = ['arc_length', '1', '0.6666666666666666', '0', 'tke', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_stddev_X', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_stddev_Y', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_stddev_Z', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_stddev_Magnitude', '1', '0.5000076295109483', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
+tke025Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
+tke025Display.SeriesLabelPrefix = ''
+tke025Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '1', 'arc_length', '1', 'tke', '1', 'u_stddev_Magnitude', '1', 'u_stddev_X', '1', 'u_stddev_Y', '1', 'u_stddev_Z', '1', 'vtkValidPointMask', '1']
+tke025Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'tke', '2', 'u_stddev_Magnitude', '2', 'u_stddev_X', '2', 'u_stddev_Y', '2', 'u_stddev_Z', '2', 'vtkValidPointMask', '2']
+tke025Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
+tke025Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'tke', '4', 'u_stddev_Magnitude', '4', 'u_stddev_X', '4', 'u_stddev_Y', '4', 'u_stddev_Z', '4', 'vtkValidPointMask', '4']
+
 # show data from tke05
 tke05Display = Show(tke05, tke, 'XYChartRepresentation')
 
@@ -638,7 +622,7 @@ tke05Display.CompositeDataSetIndex = [0]
 tke05Display.UseIndexForXAxis = 0
 tke05Display.XArrayName = 'tke'
 tke05Display.SeriesVisibility = ['arc_length']
-tke05Display.SeriesLabel = ['arc_length', 'y/H = 0.5', 'tke', 'tke', 'u_stddev_X', 'u_stddev_X', 'u_stddev_Y', 'u_stddev_Y', 'u_stddev_Z', 'u_stddev_Z', 'u_stddev_Magnitude', 'u_stddev_Magnitude', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+tke05Display.SeriesLabel = ['arc_length', 'y/H = 3', 'tke', 'tke', 'u_stddev_X', 'u_stddev_X', 'u_stddev_Y', 'u_stddev_Y', 'u_stddev_Z', 'u_stddev_Z', 'u_stddev_Magnitude', 'u_stddev_Magnitude', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
 tke05Display.SeriesColor = ['arc_length', '0.3333333333333333', '0', '0.4980392156862745', 'tke', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_stddev_X', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_stddev_Y', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_stddev_Z', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_stddev_Magnitude', '1', '0.5000076295109483', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
 tke05Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
 tke05Display.SeriesLabelPrefix = ''
@@ -646,6 +630,22 @@ tke05Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Point
 tke05Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'tke', '2', 'u_stddev_Magnitude', '2', 'u_stddev_X', '2', 'u_stddev_Y', '2', 'u_stddev_Z', '2', 'vtkValidPointMask', '2']
 tke05Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
 tke05Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'tke', '4', 'u_stddev_Magnitude', '4', 'u_stddev_X', '4', 'u_stddev_Y', '4', 'u_stddev_Z', '4', 'vtkValidPointMask', '4']
+# show data from tke075
+tke075Display = Show(tke075, tke, 'XYChartRepresentation')
+
+# trace defaults for the display properties.
+tke075Display.CompositeDataSetIndex = [0]
+tke075Display.UseIndexForXAxis = 0
+tke075Display.XArrayName = 'tke'
+tke075Display.SeriesVisibility = ['arc_length']
+tke075Display.SeriesLabel = ['arc_length', 'y/H = 4.5', 'tke', 'tke', 'u_stddev_X', 'u_stddev_X', 'u_stddev_Y', 'u_stddev_Y', 'u_stddev_Z', 'u_stddev_Z', 'u_stddev_Magnitude', 'u_stddev_Magnitude', 'vtkValidPointMask', 'vtkValidPointMask', 'Points_X', 'Points_X', 'Points_Y', 'Points_Y', 'Points_Z', 'Points_Z', 'Points_Magnitude', 'Points_Magnitude']
+tke075Display.SeriesColor = ['arc_length', '0.3333333333333333', '0.6666666666666666', '0', 'tke', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'u_stddev_X', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'u_stddev_Y', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155', 'u_stddev_Z', '0.6', '0.3100022888532845', '0.6399938963912413', 'u_stddev_Magnitude', '1', '0.5000076295109483', '0', 'vtkValidPointMask', '0.6500038147554742', '0.3400015259021897', '0.16000610360875867', 'Points_X', '0', '0', '0', 'Points_Y', '0.8899977111467154', '0.10000762951094835', '0.1100022888532845', 'Points_Z', '0.220004577706569', '0.4899977111467155', '0.7199969481956207', 'Points_Magnitude', '0.30000762951094834', '0.6899977111467155', '0.2899977111467155']
+tke075Display.SeriesPlotCorner = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
+tke075Display.SeriesLabelPrefix = ''
+tke075Display.SeriesLineStyle = ['Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '1', 'arc_length', '1', 'tke', '1', 'u_stddev_Magnitude', '1', 'u_stddev_X', '1', 'u_stddev_Y', '1', 'u_stddev_Z', '1', 'vtkValidPointMask', '1']
+tke075Display.SeriesLineThickness = ['Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'arc_length', '2', 'tke', '2', 'u_stddev_Magnitude', '2', 'u_stddev_X', '2', 'u_stddev_Y', '2', 'u_stddev_Z', '2', 'vtkValidPointMask', '2']
+tke075Display.SeriesMarkerStyle = ['Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '0', 'arc_length', '0', 'tke', '0', 'u_stddev_Magnitude', '0', 'u_stddev_X', '0', 'u_stddev_Y', '0', 'u_stddev_Z', '0', 'vtkValidPointMask', '0']
+tke075Display.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '4', 'arc_length', '4', 'tke', '4', 'u_stddev_Magnitude', '4', 'u_stddev_X', '4', 'u_stddev_Y', '4', 'u_stddev_Z', '4', 'vtkValidPointMask', '4']
 
 # ----------------------------------------------------------------
 # restore active source
