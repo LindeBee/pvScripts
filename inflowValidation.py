@@ -12,7 +12,7 @@ paraview.simple._DisableFirstRenderCameraReset()
 # Create a new 'Line Chart View'
 lineChartView1 = CreateView('XYChartView')
 lineChartView1.ViewSize = [918, 844]
-lineChartView1.LegendPosition = [20, 651]
+lineChartView1.LegendPosition = [100, 651]
 lineChartView1.LeftAxisUseCustomRange = 1
 lineChartView1.LeftAxisRangeMinimum = 0.
 lineChartView1.LeftAxisRangeMaximum = 3.
