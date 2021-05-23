@@ -97,8 +97,8 @@ tvv.Source.Point2 = [0.0, 0.0, zmax]
 
 # create a new 'Line'
 lineTVH1 = Line(registrationName='Line2')
-lineTVH1.Point1 = [(zmax-zmin)/2, ymin, 0.02*zmax]
-lineTVH1.Point2 = [(zmax-zmin)/2, ymax, 0.02*zmax]
+lineTVH1.Point1 = [0., ymin, 0.02*zmax]
+lineTVH1.Point2 = [0., ymax, 0.02*zmax]
 
 # create a new 'Calculator'
 calculatorTVH1 = Calculator(registrationName='CalculatorMVH1', Input=lineTVH1)
@@ -110,13 +110,13 @@ tvh002 = PlotOverLine(registrationName='tvh0.02', Input=calculatorTVH1,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-tvh002.Source.Point1 = [(zmax-zmin)/2, ymin, 0.02*zmax]
-tvh002.Source.Point2 = [(zmax-zmin)/2, ymax, 0.02*zmax]
+tvh002.Source.Point1 = [0., ymin, 0.02*zmax]
+tvh002.Source.Point2 = [0., ymax, 0.02*zmax]
 
 # create a new 'Line'
 lineTVH2 = Line(registrationName='Line3')
-lineTVH2.Point1 = [(zmax-zmin)/2, ymin, 0.05*zmax]
-lineTVH2.Point2 = [(zmax-zmin)/2, ymax, 0.05*zmax]
+lineTVH2.Point1 = [0., ymin, 0.05*zmax]
+lineTVH2.Point2 = [0., ymax, 0.05*zmax]
 
 # create a new 'Calculator'
 calculatorTVH2 = Calculator(registrationName='CalculatorMVH2', Input=lineTVH2)
@@ -128,13 +128,13 @@ tvh005 = PlotOverLine(registrationName='tvh0.05', Input=calculatorTVH2,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-tvh005.Source.Point1 = [(zmax-zmin)/2, ymin, 0.05*zmax]
-tvh005.Source.Point2 = [(zmax-zmin)/2, ymax, 0.05*zmax]
+tvh005.Source.Point1 = [0., ymin, 0.05*zmax]
+tvh005.Source.Point2 = [0., ymax, 0.05*zmax]
 
 # create a new 'Line'
 lineTVH3 = Line(registrationName='Line4')
-lineTVH3.Point1 = [(zmax-zmin)/2, ymin, 0.1*zmax]
-lineTVH3.Point2 = [(zmax-zmin)/2, ymax, 0.1*zmax]
+lineTVH3.Point1 = [0., ymin, 0.1*zmax]
+lineTVH3.Point2 = [0., ymax, 0.1*zmax]
 
 # create a new 'Calculator'
 calculatorTVH3 = Calculator(registrationName='CalculatorMVH3', Input=lineTVH3)
@@ -146,13 +146,13 @@ tvh01 = PlotOverLine(registrationName='tvh0.1', Input=calculatorTVH3,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-tvh01.Source.Point1 = [(zmax-zmin)/2, ymin, 0.1*zmax]
-tvh01.Source.Point2 = [(zmax-zmin)/2, ymax, 0.1*zmax]
+tvh01.Source.Point1 = [0., ymin, 0.1*zmax]
+tvh01.Source.Point2 = [0., ymax, 0.1*zmax]
 
 # create a new 'Line'
 lineTVH4 = Line(registrationName='Line5')
-lineTVH4.Point1 = [(zmax-zmin)/2, ymin, 0.3*zmax]
-lineTVH4.Point2 = [(zmax-zmin)/2, ymax, 0.3*zmax]
+lineTVH4.Point1 = [0., ymin, 0.3*zmax]
+lineTVH4.Point2 = [0., ymax, 0.3*zmax]
 
 # create a new 'Calculator'
 calculatorTVH4 = Calculator(registrationName='Calculator7', Input=lineTVH4)
@@ -164,13 +164,13 @@ tvh03 = PlotOverLine(registrationName='tvh0.3', Input=calculatorTVH4,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-tvh03.Source.Point1 = [(zmax-zmin)/2, ymin, 0.3*zmax]
-tvh03.Source.Point2 = [(zmax-zmin)/2, ymax, 0.3*zmax]
+tvh03.Source.Point1 = [0., ymin, 0.3*zmax]
+tvh03.Source.Point2 = [0., ymax, 0.3*zmax]
 
 # create a new 'Line'
 lineTVH5 = Line(registrationName='Line6')
-lineTVH5.Point1 = [(zmax-zmin)/2, ymin, 0.7*zmax]
-lineTVH5.Point2 = [(zmax-zmin)/2, ymax, 0.7*zmax]
+lineTVH5.Point1 = [0., ymin, 0.7*zmax]
+lineTVH5.Point2 = [0., ymax, 0.7*zmax]
 
 # create a new 'Calculator'
 calculatorTVH5 = Calculator(registrationName='Calculator8', Input=lineTVH5)
@@ -182,8 +182,8 @@ tvh07 = PlotOverLine(registrationName='tvh0.7', Input=calculatorTVH5,
     Source='Line')
 
 # init the 'Line' selected for 'Source'
-tvh07.Source.Point1 = [(zmax-zmin)/2, ymin, 0.7*zmax]
-tvh07.Source.Point2 = [(zmax-zmin)/2, ymax, 0.7*zmax]
+tvh07.Source.Point1 = [0., ymin, 0.7*zmax]
+tvh07.Source.Point2 = [0., ymax, 0.7*zmax]
 
 # create a new 'Temporal Statistics'
 standdevstats = TemporalStatistics(registrationName='TemporalStatistics2', Input=uxdmf)
