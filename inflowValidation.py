@@ -179,6 +179,7 @@ transform2.Transform = 'Transform'
 
 # init the 'Transform' selected for 'Transform'
 transform2.Transform.Scale = [0.5, 0.5, 0.5]
+transform2.TransformAllInputVectors = 0
 
 # create a new 'Calculator'
 calculator3 = Calculator(registrationName='Calculator3', Input=transform2)
