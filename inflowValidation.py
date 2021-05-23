@@ -104,6 +104,7 @@ transform1.Transform = 'Transform'
 
 # init the 'Transform' selected for 'Transform'
 transform1.Transform.Translate = [0.25, 0.0, 0.0]
+transform1.TransformAllInputVectors = 0
 
 # create a new 'Clip'
 x125exp = Clip(registrationName='=-1.25(exp)', Input=transform1)
@@ -449,7 +450,7 @@ tkex025simDisplay.SeriesMarkerSize = ['Points_Magnitude', '4', 'Points_X', '4', 
 SetActiveSource(tkex025sim)
 # ----------------------------------------------------------------
 
-print("Writing u_mag")
+print("Writing inflow")
 
 aLayout = GetLayout()
 SaveScreenshot("./images/inflowValidation.png", layout=aLayout)
