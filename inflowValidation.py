@@ -36,8 +36,8 @@ lineChartView2.LeftAxisRangeMaximum = 3.0
 lineChartView2.BottomAxisRangeMaximum = 0.04
 lineChartView2.RightAxisRangeMaximum = 6.66
 lineChartView2.TopAxisRangeMaximum = 6.66
-lineChartView1.LeftAxisTitle = 'z/H'
-lineChartView1.BottomAxisTitle = '<tke/u_H>'
+lineChartView2.LeftAxisTitle = 'z/H'
+lineChartView2.BottomAxisTitle = '<tke/u_H>'
 
 SetActiveView(None)
 
