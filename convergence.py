@@ -45,7 +45,7 @@ mean_vel2csv = CSVReader(registrationName='mean_vel.csv', FileName=['./results/m
 
 # create a new 'Plot Data'
 plotData1 = PlotData(registrationName='PlotData1', Input=mean_vel2csv)
-PlotData1.ShowLegend = 0
+plotData1.ShowLegend = 0
 
 # ----------------------------------------------------------------
 # setup the visualization in view 'lineChartView1'
