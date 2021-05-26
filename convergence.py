@@ -13,12 +13,8 @@ paraview.simple._DisableFirstRenderCameraReset()
 lineChartView1 = CreateView('XYChartView')
 lineChartView1.ViewSize = [2018, 1134]
 lineChartView1.LeftAxisTitle = 'mean velocity in area of interest'
-lineChartView1.LeftAxisRangeMinimum = 0.68
-lineChartView1.LeftAxisRangeMaximum = 0.97
 lineChartView1.BottomAxisTitle = 'time'
-lineChartView1.BottomAxisRangeMaximum = 30.0
-lineChartView1.RightAxisRangeMaximum = 6.66
-lineChartView1.TopAxisRangeMaximum = 6.66
+lineChartView1.ShowLegend = 0
 
 SetActiveView(None)
 
@@ -45,7 +41,6 @@ mean_vel2csv = CSVReader(registrationName='mean_vel.csv', FileName=['./results/m
 
 # create a new 'Plot Data'
 plotData1 = PlotData(registrationName='PlotData1', Input=mean_vel2csv)
-plotData1.ShowLegend = 0
 
 # ----------------------------------------------------------------
 # setup the visualization in view 'lineChartView1'
