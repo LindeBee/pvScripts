@@ -11,8 +11,9 @@ paraview.simple._DisableFirstRenderCameraReset()
 
 # Create a new 'Line Chart View'
 lineChartView1 = CreateView('XYChartView')
-lineChartView1.ViewSize = [918, 844]
-lineChartView1.LegendPosition = [100, 651]
+lineChartView1.ViewSize = [459, 422]
+lineChartView1.LegendLocation = 'Custom'
+lineChartView1.LegendPosition = [44, 529]
 lineChartView1.LeftAxisUseCustomRange = 1
 lineChartView1.LeftAxisRangeMinimum = 0.
 lineChartView1.LeftAxisRangeMaximum = 3.
@@ -25,7 +26,7 @@ lineChartView1.BottomAxisTitle = '<u/u_H>'
 
 # Create a new 'Line Chart View'
 lineChartView2 = CreateView('XYChartView')
-lineChartView2.ViewSize = [916, 844]
+lineChartView2.ViewSize = [459, 422]
 lineChartView2.LegendPosition = [770, 791]
 lineChartView2.LeftAxisRangeMaximum = 3.0
 lineChartView2.BottomAxisRangeMaximum = 0.04
@@ -43,7 +44,7 @@ layout1 = CreateLayout(name='Layout #1')
 layout1.SplitHorizontal(0, 0.500000)
 layout1.AssignView(1, lineChartView1)
 layout1.AssignView(2, lineChartView2)
-layout1.SetSize(1835, 844)
+layout1.SetSize(919, 845)
 
 # ----------------------------------------------------------------
 # restore active view
