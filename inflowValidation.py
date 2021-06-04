@@ -313,7 +313,7 @@ plotData3Display.SeriesPlotCorner = ['<tke/uH>', '0', '<u/uH>', '0', 'Points_Mag
 plotData3Display.SeriesLabelPrefix = ''
 plotData3Display.SeriesLineStyle = ['<tke/uH>', '1', '<u/uH>', '1', 'Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '0', 'Unsu', '1', 'Unsv', '1', 'Unsw', '1', 'Ussuv', '1', 'Ussuw', '1', 'Utke', '1', 'Uu', '1', 'nsu', '1', 'nsv', '1', 'nsw', '1', 'ssuv', '1', 'ssuw', '1']
 plotData3Display.SeriesLineThickness = ['<tke/uH>', '2', '<u/uH>', '2', 'Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'Unsu', '2', 'Unsv', '2', 'Unsw', '2', 'Ussuv', '2', 'Ussuw', '2', 'Utke', '2', 'Uu', '2', 'nsu', '2', 'nsv', '2', 'nsw', '2', 'ssuv', '2', 'ssuw', '2']
-plotData3Display.SeriesMarkerStyle = ['<tke/uH>', '0', '<u/uH>', '0', 'Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '2', 'Unsu', '0', 'Unsv', '0', 'Unsw', '0', 'Ussuv', '0', 'Ussuw', '0', 'Utke', '0', 'Uu', '0', 'nsu', '0', 'nsv', '0', 'nsw', '0', 'ssuv', '0', 'ssuw', '0']
+plotData3Display.SeriesMarkerStyle = ['<tke/uH>', '0', '<u/uH>', '0', 'Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '4', 'Unsu', '0', 'Unsv', '0', 'Unsw', '0', 'Ussuv', '0', 'Ussuw', '0', 'Utke', '0', 'Uu', '0', 'nsu', '0', 'nsv', '0', 'nsw', '0', 'ssuv', '0', 'ssuw', '0']
 plotData3Display.SeriesMarkerSize = ['<tke/uH>', '4', '<u/uH>', '4', 'Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '9', 'Unsu', '4', 'Unsv', '4', 'Unsw', '4', 'Ussuv', '4', 'Ussuw', '4', 'Utke', '4', 'Uu', '4', 'nsu', '4', 'nsv', '4', 'nsw', '4', 'ssuv', '4', 'ssuw', '4']
 
 # show data from x025sim
@@ -419,7 +419,7 @@ tkex025expDisplay.SeriesPlotCorner = ['<tke/uH>', '0', '<u/uH>', '0', 'Points_Ma
 tkex025expDisplay.SeriesLabelPrefix = ''
 tkex025expDisplay.SeriesLineStyle = ['<tke/uH>', '1', '<u/uH>', '1', 'Points_Magnitude', '1', 'Points_X', '1', 'Points_Y', '1', 'Points_Z', '0', 'Unsu', '1', 'Unsv', '1', 'Unsw', '1', 'Ussuv', '1', 'Ussuw', '1', 'Utke', '1', 'Uu', '1', 'nsu', '1', 'nsv', '1', 'nsw', '1', 'ssuv', '1', 'ssuw', '1']
 tkex025expDisplay.SeriesLineThickness = ['<tke/uH>', '2', '<u/uH>', '2', 'Points_Magnitude', '2', 'Points_X', '2', 'Points_Y', '2', 'Points_Z', '2', 'Unsu', '2', 'Unsv', '2', 'Unsw', '2', 'Ussuv', '2', 'Ussuw', '2', 'Utke', '2', 'Uu', '2', 'nsu', '2', 'nsv', '2', 'nsw', '2', 'ssuv', '2', 'ssuw', '2']
-tkex025expDisplay.SeriesMarkerStyle = ['<tke/uH>', '0', '<u/uH>', '0', 'Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '2', 'Unsu', '0', 'Unsv', '0', 'Unsw', '0', 'Ussuv', '0', 'Ussuw', '0', 'Utke', '0', 'Uu', '0', 'nsu', '0', 'nsv', '0', 'nsw', '0', 'ssuv', '0', 'ssuw', '0']
+tkex025expDisplay.SeriesMarkerStyle = ['<tke/uH>', '0', '<u/uH>', '0', 'Points_Magnitude', '0', 'Points_X', '0', 'Points_Y', '0', 'Points_Z', '4', 'Unsu', '0', 'Unsv', '0', 'Unsw', '0', 'Ussuv', '0', 'Ussuw', '0', 'Utke', '0', 'Uu', '0', 'nsu', '0', 'nsv', '0', 'nsw', '0', 'ssuv', '0', 'ssuw', '0']
 tkex025expDisplay.SeriesMarkerSize = ['<tke/uH>', '4', '<u/uH>', '4', 'Points_Magnitude', '4', 'Points_X', '4', 'Points_Y', '4', 'Points_Z', '9', 'Unsu', '4', 'Unsv', '4', 'Unsw', '4', 'Ussuv', '4', 'Ussuw', '4', 'Utke', '4', 'Uu', '4', 'nsu', '4', 'nsv', '4', 'nsw', '4', 'ssuv', '4', 'ssuw', '4']
 
 # show data from tkex025sim
