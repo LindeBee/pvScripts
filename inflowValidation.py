@@ -43,7 +43,7 @@ layout1 = CreateLayout(name='Layout #1')
 layout1.SplitHorizontal(0, 0.500000)
 layout1.AssignView(1, lineChartView1)
 layout1.AssignView(2, lineChartView2)
-layout1.SetSize(459, 845)
+layout1.SetSize(919, 422)
 
 # ----------------------------------------------------------------
 # restore active view
