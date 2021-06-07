@@ -232,9 +232,6 @@ u_averageLUT.RGBPoints = [-0.05, 0.019607, 0.07853, 0.60784, 0.0, 0.019607, 0.07
 u_averageLUT.ColorSpace = 'Step'
 u_averageLUT.ScalarRangeInitialized = 1.0
 
-u_averageLUT.TitleColor = [0.0, 0.0, 0.0]
-u_averageLUT.LabelColor = [0.0, 0.0, 0.0]
-
 # trace defaults for the display properties.
 slice2Display.Representation = 'Surface'
 slice2Display.ColorArrayName = ['POINTS', 'u_average']
@@ -435,6 +432,9 @@ magU_averageLUTColorBar.Position = [0.03625110766504214, 0.04272276670046187]
 magU_averageLUTColorBar.Title = 'magU_average'
 magU_averageLUTColorBar.ComponentTitle = ''
 magU_averageLUTColorBar.ScalarBarLength = 0.9072220344711065
+
+magU_averageLUTColorBar.TitleColor = [0.0, 0.0, 0.0]
+magU_averageLUTColorBar.LabelColor = [0.0, 0.0, 0.0]
 
 # set color bar visibility
 magU_averageLUTColorBar.Visibility = 1
