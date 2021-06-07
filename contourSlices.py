@@ -232,6 +232,9 @@ u_averageLUT.RGBPoints = [-0.05, 0.019607, 0.07853, 0.60784, 0.0, 0.019607, 0.07
 u_averageLUT.ColorSpace = 'Step'
 u_averageLUT.ScalarRangeInitialized = 1.0
 
+u_averageLUT.TitleColor = [0.0, 0.0, 0.0]
+u_averageLUT.LabelColor = [0.0, 0.0, 0.0]
+
 # trace defaults for the display properties.
 slice2Display.Representation = 'Surface'
 slice2Display.ColorArrayName = ['POINTS', 'u_average']
@@ -262,6 +265,7 @@ slice2Display.OpacityTransferFunction.Points = [0.017403111010631273, 0.0, 0.5, 
 
 # show data from text1
 text1Display = Show(text1, renderView1, 'TextSourceRepresentation')
+text1Display.Color = [0.0, 0.0, 0.0]
 
 # ----------------------------------------------------------------
 # setup the visualization in view 'renderView2'
@@ -300,6 +304,7 @@ slice3Display.OpacityTransferFunction.Points = [0.031401138495663616, 0.0, 0.5, 
 
 # show data from text2
 text2Display = Show(text2, renderView2, 'TextSourceRepresentation')
+text2Display.Color = [0.0, 0.0, 0.0]
 
 # ----------------------------------------------------------------
 # setup the visualization in view 'renderView3'
@@ -338,6 +343,7 @@ slice4Display.OpacityTransferFunction.Points = [0.1035263935878075, 0.0, 0.5, 0.
 
 # show data from text3
 text3Display = Show(text3, renderView3, 'TextSourceRepresentation')
+text3Display.Color = [0.0, 0.0, 0.0]
 
 # ----------------------------------------------------------------
 # setup the visualization in view 'renderView4'
@@ -376,6 +382,7 @@ slice5Display.OpacityTransferFunction.Points = [0.09844907414822635, 0.0, 0.5, 0
 
 # show data from text4
 text4Display = Show(text4, renderView4, 'TextSourceRepresentation')
+text4Display.Color = [0.0, 0.0, 0.0]
 
 # ----------------------------------------------------------------
 # setup the visualization in view 'renderView5'
