@@ -91,9 +91,9 @@ rescsv = CSVReader(registrationName='res.csv', FileName=['./res.csv'])
 
 # create a new 'Table To Points'
 tableToPoints2 = TableToPoints(registrationName='TableToPoints2', Input=rescsv)
-tableToPoints2.XColumn = 'Points_0'
-tableToPoints2.YColumn = 'Points_1'
-tableToPoints2.ZColumn = 'Points_2'
+tableToPoints2.XColumn = 'Points:0'
+tableToPoints2.YColumn = 'Points:1'
+tableToPoints2.ZColumn = 'Points:2'
 
 # create a new 'Table To Points'
 tableToPoints1 = TableToPoints(registrationName='TableToPoints1', Input=a112isocsv)
@@ -120,14 +120,19 @@ calculator2.ResultArrayName = '<U/uH>'
 calculator2.Function = 'sqrt(<u/uH>^2+<v/uH>^2+<w/uH>^2)'
 
 # create a new 'Calculator'
-distanceError = Calculator(registrationName='DistanceError', Input=calculator2)
+calculator3 = Calculator(registrationName='Calculator3', Input=calculator2)
+calculator3.ResultArrayName = 'u_average:Magnitude'
+calculator3.Function = 'sqrt(u_average:0^2+u_average:1^2+u_average:2^2)'
+
+# create a new 'Calculator'
+distanceError = Calculator(registrationName='DistanceError', Input=calculator3)
 distanceError.ResultArrayName = 'distance'
-distanceError.Function = 'sqrt((max(abs(<u/uH>-u_average_0)-Uu,0))^2+(max(abs(<v/uH>-u_average_1)-Uv,0))^2+(max(abs(<w/uH>-u_average_2)-Uw,0))^2)'
+distanceError.Function = 'sqrt((max(abs(<u/uH>-u_average:0)-Uu,0))^2+(max(abs(<v/uH>-u_average:1)-Uv,0))^2+(max(abs(<w/uH>-u_average:2)-Uw,0))^2)'
 
 # create a new 'Calculator'
 magError = Calculator(registrationName='MagError', Input=distanceError)
 magError.ResultArrayName = 'errorMag'
-magError.Function = '(<U/uH>-u_average_Magnitude)'
+magError.Function = '(<U/uH>-u_average:Magnitude)'
 
 # create a new 'Compute Quartiles'
 computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input=magError)
@@ -135,7 +140,7 @@ computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input
 # create a new 'Descriptive Statistics'
 descriptiveStatistics1 = DescriptiveStatistics(registrationName='DescriptiveStatistics1', Input=magError,
     ModelInput=None)
-descriptiveStatistics1.VariablesofInterest = ['<U/uH>', 'distance', 'errorMag', 'u_average_Magnitude']
+descriptiveStatistics1.VariablesofInterest = ['<U/uH>', 'distance', 'errorMag', 'u_average:Magnitude']
 
 # ----------------------------------------------------------------
 # setup the visualization in view 'renderView1'
