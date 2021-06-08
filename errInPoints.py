@@ -90,7 +90,7 @@ writer.UpdatePipeline()
 rescsv = CSVReader(registrationName='res.csv', FileName=['./res.csv'])
 
 # create a new 'Table To Points'
-tableToPoints2 = TableToPoints(registrationName='TableToPoints2', Input=powrescsv)
+tableToPoints2 = TableToPoints(registrationName='TableToPoints2', Input=rescsv)
 tableToPoints2.XColumn = 'Points_0'
 tableToPoints2.YColumn = 'Points_1'
 tableToPoints2.ZColumn = 'Points_2'
