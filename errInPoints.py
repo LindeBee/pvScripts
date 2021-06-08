@@ -191,7 +191,7 @@ magErrorDisplay.OpacityTransferFunction.Points = [0.020904544960366873, 0.0, 0.5
 # get color legend/bar for errorMagLUT in view renderView1
 errorMagLUTColorBar = GetScalarBar(errorMagLUT, renderView1)
 errorMagLUTColorBar.WindowLocation = 'AnyLocation'
-errorMagLUTColorBar.Position = [0.6557098765432099, 0.12757201646090535]
+errorMagLUTColorBar.Position = [0.8, 0.12]
 errorMagLUTColorBar.Title = 'error magnitude'
 errorMagLUTColorBar.ComponentTitle = ''
 errorMagLUTColorBar.ScalarBarLength = 0.3300000000000004
@@ -248,7 +248,7 @@ distanceErrorDisplay.OpacityTransferFunction.Points = [0.0, 0.0, 0.5, 0.0, 0.807
 # get color legend/bar for distanceLUT in view renderView2
 distanceLUTColorBar = GetScalarBar(distanceLUT, renderView2)
 distanceLUTColorBar.WindowLocation = 'AnyLocation'
-distanceLUTColorBar.Position = [0.6544753086419751, 0.12074074074074076]
+distanceLUTColorBar.Position = [0.8, 0.12]
 distanceLUTColorBar.Title = 'error distance'
 distanceLUTColorBar.ComponentTitle = ''
 distanceLUTColorBar.ScalarBarLength = 0.3299999999999996
