@@ -134,7 +134,7 @@ distanceError.Function = 'sqrt((max(abs(<u/uH>-u_average:0)-Uu,0))^2+(max(abs(<v
 # create a new 'Calculator'
 magError = Calculator(registrationName='MagError', Input=distanceError)
 magError.ResultArrayName = 'errorMag'
-magError.Function = '(<U/uH>-u_average:Magnitude)'
+magError.Function = '(u_average:Magnitude-<U/uH>)'
 
 # create a new 'Compute Quartiles'
 computeQuartiles1 = ComputeQuartiles(registrationName='ComputeQuartiles1', Input=magError)
