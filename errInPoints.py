@@ -65,7 +65,7 @@ SetActiveView(renderView1)
 
 
 # create a new 'CSV Reader'
-a112isocsv = CSVReader(registrationName='112iso.csv', FileName=['/Users/linde/Documents/Master/Thesis/github/pvScripts/112iso.csv'])
+a112isocsv = CSVReader(registrationName='112iso.csv', FileName=['./pvScripts/112iso.csv'])
 
 # create a new 'XDMF Reader'
 uxdmf = XDMFReader(registrationName='u.xdmf', FileNames=['./results/u.xdmf'])
