@@ -25,6 +25,7 @@ renderView1.CameraFocalDisk = 1.0
 renderView1.CameraParallelScale = 1.4402712418152352
 renderView1.BackEnd = 'OSPRay raycaster'
 renderView1.OSPRayMaterialLibrary = materialLibrary1
+renderView1.Background = [0.0, 0.0, 0.0]
 
 # Create a new 'Render View'
 renderView2 = CreateView('RenderView')
@@ -39,6 +40,7 @@ renderView2.CameraFocalDisk = 1.0
 renderView2.CameraParallelScale = 1.4402712418152352
 renderView2.BackEnd = 'OSPRay raycaster'
 renderView2.OSPRayMaterialLibrary = materialLibrary1
+renderView2.Background = [0.0, 0.0, 0.0]
 
 SetActiveView(None)
 
