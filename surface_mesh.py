@@ -53,7 +53,7 @@ Show(meshxdmf)
 (xmin,xmax,ymin,ymax,zmin,zmax) = GetActiveSource().GetDataInformation().GetBounds()
 Hide(meshxdmf)
 
-elems = uxdmf.GetDataInformation().GetNumberOfPoints()
+elems = meshxdmf.GetDataInformation().GetNumberOfPoints()
 
 renderView1.CameraPosition = [-xmax/8., -xmax/4., xmax/8.]
 renderView1.CameraFocalPoint = [0., 0., xmax/300]
