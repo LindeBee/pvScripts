@@ -53,6 +53,8 @@ Show(meshxdmf)
 (xmin,xmax,ymin,ymax,zmin,zmax) = GetActiveSource().GetDataInformation().GetBounds()
 Hide(meshxdmf)
 
+elems = uxdmf.GetDataInformation().GetNumberOfPoints()
+
 renderView1.CameraPosition = [-xmax/8., -xmax/4., xmax/8.]
 renderView1.CameraFocalPoint = [0., 0., xmax/300]
 renderView1.CameraViewUp = [0., 0., 1.]
@@ -120,7 +122,7 @@ SetActiveSource(clip1)
 import os.path
 from os import path
 
-print("Rendering: mesh")
+print("Rendering: mesh with "+ str(elems)+ " elements")
 SaveScreenshot('./images/surfaceMesh.png', renderView1, ImageResolution=[1818, 1146])
 
 print("Exiting")
